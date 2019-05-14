@@ -73,7 +73,9 @@ data LooperFlags =
   deriving (Show, Eq, Generic)
 
 -- | An optparse applicative parser for 'LooperFlags'
-getLooperFlags :: String -> Parser LooperFlags
+getLooperFlags ::
+     String -- ^ The name of the looper (best to make this all-lowercase)
+  -> Parser LooperFlags
 getLooperFlags name =
   LooperFlags <$> doubleSwitch name (unwords ["enable the", name, "looper"]) mempty <*>
   option
@@ -174,8 +176,8 @@ data LooperSettings =
   deriving (Show, Eq, Generic)
 
 deriveLooperSettings ::
-     NominalDiffTime
-  -> NominalDiffTime
+     NominalDiffTime -- ^ Default phase
+  -> NominalDiffTime -- ^ Default period
   -> LooperFlags
   -> LooperEnvironment
   -> Maybe LooperConfiguration
@@ -192,9 +194,9 @@ deriveLooperSettings defaultPhase defaultPeriod LooperFlags {..} LooperEnvironme
    in LooperSettings {..}
 
 mkLooperDef ::
-     Text -- Name
+     Text -- ^ Name
   -> LooperSettings
-  -> m () -- The function to loop
+  -> m () -- ^ The function to loop
   -> LooperDef m
 mkLooperDef name LooperSettings {..} func =
   LooperDef
@@ -207,7 +209,7 @@ mkLooperDef name LooperSettings {..} func =
 
 -- | Simply run loopers
 --
--- > runLoopers = runLoopersIgnoreOverrun $ looperDefFunc
+-- > runLoopers = runLoopersIgnoreOverrun looperDefFunc
 --
 -- see 'runLoopersIgnoreOverrun'
 --
