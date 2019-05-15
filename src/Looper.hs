@@ -11,6 +11,7 @@ module Looper
   , getLooperFlags
   , LooperEnvironment(..)
   , getLooperEnvironment
+  , readLooperEnvironment
   , LooperConfiguration(..)
   , LooperSettings(..)
   , deriveLooperSettings
@@ -124,7 +125,7 @@ data LooperEnvironment =
     }
   deriving (Show, Eq, Generic)
 
--- | Get a 'LooperEnvironment' from a the environment
+-- | Get a 'LooperEnvironment' from the environment
 getLooperEnvironment ::
      String -- ^ Prefix for each variable (best to make this all-caps)
   -> String -- ^ Name of the looper (best to make this all-caps too)
