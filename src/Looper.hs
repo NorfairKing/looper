@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE DeriveGeneric #-}
@@ -34,7 +35,9 @@ import Data.Maybe
 import Data.String
 import Data.Text (Text)
 import Data.Time
-
+#if !MIN_VERSION_base(4,11,0)
+import Data.Monoid
+#endif
 import Options.Applicative
 import Text.Read
 
