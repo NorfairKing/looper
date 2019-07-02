@@ -10,7 +10,3 @@ snapshots:
     url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/13/21.yaml
     sha256: eff2de19a6d4691ccbf6edc1fba858f1918683047dce0f09adede874bbd2a8f3
   original: lts-13.21
-- completed:
-    compiler: ghc-8.6.5
-  original:
-    compiler: ghc-8.6.5

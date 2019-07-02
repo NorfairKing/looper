@@ -230,7 +230,7 @@ runLoopersIgnoreOverrun ::
   => (LooperDef m -> m ()) -- ^ Custom runner
   -> [LooperDef m] -- ^ Loopers
   -> m ()
-runLoopersIgnoreOverrun = runLoopersRaw (pure ())
+runLoopersIgnoreOverrun = runLoopersRaw (const $ pure ())
 
 -- | Run loopers, with a custom runner and overrun handler
 --
@@ -245,7 +245,7 @@ runLoopersIgnoreOverrun = runLoopersRaw (pure ())
 -- Note that this function will loop forever, you need to wrap it using 'async' yourself.
 runLoopersRaw ::
      MonadUnliftIO m
-  => m () -- ^ Overrun handler
+  => (LooperDef m -> m ()) -- ^ Overrun handler
   -> (LooperDef m -> m ()) -- ^ Runner
   -> [LooperDef m] -- ^ Loopers
   -> m ()
@@ -260,7 +260,7 @@ runLoopersRaw onOverrun runLooper =
             let elapsed = diffUTCTime end start
             let nextWait = looperDefPeriod - elapsed
             if (nextWait < 0)
-              then onOverrun
+              then onOverrun ld
               else waitNominalDiffTime nextWait
             loop
       loop

@@ -110,7 +110,7 @@ spec = do
               , looperDefPhase = seconds 0
               , looperDefFunc = inc1
               }
-      a <- async $ runLoopersRaw (pure ()) (\ld -> looperDefFunc ld >> inc2) [l]
+      a <- async $ runLoopersRaw (const $ pure ()) (\ld -> looperDefFunc ld >> inc2) [l]
       waitNominalDiffTime $ seconds 0.015
       cancel a
       r1 <- readTVarIO v1
@@ -129,7 +129,7 @@ spec = do
               , looperDefPhase = seconds 0
               , looperDefFunc = inc1 >> waitNominalDiffTime (seconds 0.015)
               }
-      a <- async $ runLoopersRaw inc2 looperDefFunc [l]
+      a <- async $ runLoopersRaw (const $ inc2) looperDefFunc [l]
       waitNominalDiffTime $ seconds 0.035
       cancel a
       r1 <- readTVarIO v1
