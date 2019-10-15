@@ -10,7 +10,7 @@ extra-source-files:
 - README.md
 - ChangeLog.md
 
-description:         Please see the README on GitHub at <https://github.com/NorfairKing/looper#readme>
+description:         Please see the README on GitHub at <https://github.com/NorfairKing/looper#readme> and the overview at https://hackage.haskell.org/package/looper
 
 dependencies:
 - base >= 4.7 && < 5
