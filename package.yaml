@@ -1,27 +1,23 @@
 name:                looper
-version:             0.0.0.2
+version:             0.1.0.0
 github:              "NorfairKing/looper"
 license:             BSD3
 author:              "Tom Sydney Kerckhove"
 maintainer:          "syd@cs-syd.eu"
 copyright:           "Copyright: (c) 2019 Tom Sydney Kerckhove"
 
-extra-source-files:
-- README.md
-- ChangeLog.md
-
-description:         Please see the README on GitHub at <https://github.com/NorfairKing/looper#readme> and the overview at https://hackage.haskell.org/package/looper
-
 dependencies:
 - base >= 4.7 && < 5
-- text
-- optparse-applicative
-- time
-- unliftio
-- aeson
 
 library:
   source-dirs: src
+  dependencies:
+  - aeson
+  - optparse-applicative
+  - text
+  - time
+  - unliftio
+  - yamlparse-applicative >= 0.1
 
 
 tests:
@@ -33,5 +29,7 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - looper
     - hspec
+    - looper
+    - optparse-applicative
+    - unliftio

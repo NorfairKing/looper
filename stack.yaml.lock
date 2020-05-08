@@ -3,10 +3,17 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: yamlparse-applicative-0.1.0.0@sha256:591058fe1c86731a3a4d239aa7acc14f23d3902a2045e7f6c8d5116690968125,2133
+    pantry-tree:
+      size: 799
+      sha256: 984ade473e7061b20ec6301ab268aa2662fd3bd63948b66335c2218783fdcf9a
+  original:
+    hackage: yamlparse-applicative-0.1.0.0
 snapshots:
 - completed:
-    size: 498180
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/13/21.yaml
-    sha256: eff2de19a6d4691ccbf6edc1fba858f1918683047dce0f09adede874bbd2a8f3
-  original: lts-13.21
+    size: 523541
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/23.yaml
+    sha256: f761fe419a1a44fc3ef47f5bfb1853304d13320fc72b45d2798c08d21dabc23c
+  original: lts-14.23

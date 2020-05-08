@@ -38,7 +38,8 @@ import Data.Time
 #if !MIN_VERSION_base(4,11,0)
 import Data.Monoid
 #endif
-import Options.Applicative
+import Options.Applicative as OptParse
+import YamlParse.Applicative as YamlParse
 import Text.Read
 
 import UnliftIO
@@ -79,7 +80,7 @@ data LooperFlags =
 -- | An optparse applicative parser for 'LooperFlags'
 getLooperFlags ::
      String -- ^ The name of the looper (best to make this all-lowercase)
-  -> Parser LooperFlags
+  -> OptParse.Parser LooperFlags
 getLooperFlags name =
   LooperFlags <$> doubleSwitch name (unwords ["enable the", name, "looper"]) mempty <*>
   option
@@ -99,7 +100,7 @@ getLooperFlags name =
        , help $ unwords ["the period for the", name, "looper in seconds"]
        ])
 
-doubleSwitch :: String -> String -> Mod FlagFields Bool -> Parser (Maybe Bool)
+doubleSwitch :: String -> String -> Mod FlagFields Bool -> OptParse.Parser (Maybe Bool)
 doubleSwitch name helpText mods =
   let enabledValue = True
       disabledValue = False
@@ -166,9 +167,15 @@ data LooperConfiguration =
 -- | You can parse Data.Aeson's JSON or Data.Yaml's YAML to parse a 'LooperConfiguration'.
 -- You can also use Data.Yaml.Config.
 instance FromJSON LooperConfiguration where
-  parseJSON =
-    withObject "LooperConfiguration" $ \o ->
-      LooperConfiguration <$> o .:? "enabled" <*> o .:? "phase" <*> o .: "period"
+  parseJSON = viaYamlSchema
+
+instance YamlSchema LooperConfiguration where
+  yamlSchema =
+    objectParser "LooperConfiguration" $
+      LooperConfiguration
+        <$> optionalField "enabled" "Enable this looper"
+        <*> optionalField "phase" "The amount of time to wait before starting the looper the first time, in seconds"
+        <*> optionalField "period" "The amount of time to wait between runs of the looper, in seconds"
 
 -- | Settings that you might want to pass into a looper using 'mkLooperDef'
 data LooperSettings =
