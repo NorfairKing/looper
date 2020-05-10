@@ -11,6 +11,13 @@ packages:
       sha256: 984ade473e7061b20ec6301ab268aa2662fd3bd63948b66335c2218783fdcf9a
   original:
     hackage: yamlparse-applicative-0.1.0.0
+- completed:
+    hackage: envparse-0.4.1@sha256:989902e6368532548f61de1fa245ad2b39176cddd8743b20071af519a709ce30,2842
+    pantry-tree:
+      size: 1180
+      sha256: 35044d67979fe2a5cff05cf8736a06a265592433cdd03e13a72908ceed892612
+  original:
+    hackage: envparse-0.4.1
 snapshots:
 - completed:
     size: 523541

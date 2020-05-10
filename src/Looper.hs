@@ -33,7 +33,6 @@ import qualified System.Environment as System (getEnvironment)
 
 import Data.Aeson
 import Data.Maybe
-import Data.String
 import Data.Text (Text)
 import Data.Time
 #if !MIN_VERSION_base(4,11,0)
@@ -42,7 +41,6 @@ import Data.Monoid
 import Options.Applicative as OptParse
 import YamlParse.Applicative as YamlParse
 import qualified Env
-import Text.Read
 
 import UnliftIO
 import UnliftIO.Concurrent
