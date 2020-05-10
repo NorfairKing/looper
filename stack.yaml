@@ -3,3 +3,4 @@ packages:
 - .
 extra-deps:
 - yamlparse-applicative-0.1.0.0
+- envparse-0.4.1

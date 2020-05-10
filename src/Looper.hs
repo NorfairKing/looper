@@ -13,6 +13,7 @@ module Looper
   , LooperEnvironment(..)
   , getLooperEnvironment
   , readLooperEnvironment
+  , looperEnvironmentParser
   , LooperConfiguration(..)
   , LooperSettings(..)
   , deriveLooperSettings
@@ -40,6 +41,7 @@ import Data.Monoid
 #endif
 import Options.Applicative as OptParse
 import YamlParse.Applicative as YamlParse
+import qualified Env
 import Text.Read
 
 import UnliftIO
@@ -142,18 +144,19 @@ readLooperEnvironment ::
   -> String -- ^ Name of the looper (best to make this all-caps too)
   -> [(String, String)]
   -> LooperEnvironment
-readLooperEnvironment prefix name env =
-  let v :: IsString s => String -> Maybe s
-      v k = fromString <$> lookup (prefix <> k) env
-      r :: Read a => String -> Maybe a
-      r k = v k >>= readMaybe
-      lr :: Read a => String -> Maybe a
-      lr k = r $ name <> "_" <> k
-   in LooperEnvironment
-        { looperEnvEnabled = lr "ENABLED"
-        , looperEnvPhase = lr "PHASE"
-        , looperEnvPeriod = lr "PERIOD"
-        }
+readLooperEnvironment prefix name env = case Env.parsePure (Env.prefixed prefix $ looperEnvironmentParser name) env of
+  Left _ -> error "This indicates a bug in looper because all environment variables are optional."
+  Right r -> r
+
+-- | An 'envparse' parser for a 'LooperEnvironment'
+looperEnvironmentParser ::
+     String -- ^ Name of the looper (best to make this all-caps)
+  -> Env.Parser Env.Error LooperEnvironment
+looperEnvironmentParser name = Env.prefixed (name <> "_") $
+  LooperEnvironment
+    <$> Env.var (fmap Just . Env.auto) "ENABLED" (Env.def Nothing <> Env.help "Whether to enable this looper")
+    <*> Env.var (fmap Just . Env.auto) "PHASE" (Env.def Nothing <> Env.help "The amount of time to wait before starting the looper the first time, in seconds")
+    <*> Env.var (fmap Just . Env.auto) "PERIOD" (Env.def Nothing <> Env.help "The amount of time to wait between runs of the looper, in seconds")
 
 -- | A structure to configuration for a looper into
 data LooperConfiguration =
