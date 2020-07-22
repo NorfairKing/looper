@@ -148,11 +148,7 @@ parserSucceedsWith parser args expectedValue =
   where
     parserPrefs :: ParserPrefs
     parserPrefs =
-      ParserPrefs
-        { prefMultiSuffix = ""
-        , prefDisambiguate = True
-        , prefShowHelpOnError = True
+      defaultPrefs
+        { prefShowHelpOnError = True
         , prefShowHelpOnEmpty = True
-        , prefBacktrack = True
-        , prefColumns = 80
         }
