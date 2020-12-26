@@ -2,5 +2,10 @@ resolver: lts-15.15
 packages:
 - .
 extra-deps:
-- yamlparse-applicative-0.1.0.0
+- yamlparse-applicative-0.1.0.2
 - envparse-0.4.1
+- github: NorfairKing/sydtest
+  commit: 7f2c040d835ea623f67382a213a0a1676e453e64
+  subdirs:
+    - sydtest
+    - sydtest-discover

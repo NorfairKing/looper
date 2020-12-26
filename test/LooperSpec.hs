@@ -1,15 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module LooperSpec
-  ( spec
-  ) where
-
-import Test.Hspec
-
-import Options.Applicative as AP
-import UnliftIO
+  ( spec,
+  )
+where
 
 import Looper
+import Options.Applicative as AP
+import Test.Syd
+import UnliftIO
 
 spec :: Spec
 spec = do
@@ -18,30 +17,42 @@ spec = do
       parserSucceedsWith
         (getLooperFlags "test")
         []
-        (LooperFlags
-           {looperFlagEnabled = Nothing, looperFlagPhase = Nothing, looperFlagPeriod = Nothing})
+        ( LooperFlags
+            { looperFlagEnabled = Nothing,
+              looperFlagPhase = Nothing,
+              looperFlagPeriod = Nothing
+            }
+        )
     it "parses an enable flag correctly" $ do
       parserSucceedsWith
         (getLooperFlags "test")
         ["--enable-test"]
-        (LooperFlags
-           {looperFlagEnabled = Just True, looperFlagPhase = Nothing, looperFlagPeriod = Nothing})
+        ( LooperFlags
+            { looperFlagEnabled = Just True,
+              looperFlagPhase = Nothing,
+              looperFlagPeriod = Nothing
+            }
+        )
     it "parses an disable flag correctly" $ do
       parserSucceedsWith
         (getLooperFlags "test")
         ["--disable-test"]
-        (LooperFlags
-           {looperFlagEnabled = Just False, looperFlagPhase = Nothing, looperFlagPeriod = Nothing})
+        ( LooperFlags
+            { looperFlagEnabled = Just False,
+              looperFlagPhase = Nothing,
+              looperFlagPeriod = Nothing
+            }
+        )
   describe "runLoopers" $ do
     it "runs one looper as intended" $ do
       v <- newTVarIO (0 :: Int)
       let l =
             LooperDef
-              { looperDefName = "l1"
-              , looperDefEnabled = True
-              , looperDefPeriod = seconds 0.01
-              , looperDefPhase = seconds 0
-              , looperDefFunc = atomically $ modifyTVar' v succ
+              { looperDefName = "l1",
+                looperDefEnabled = True,
+                looperDefPeriod = seconds 0.01,
+                looperDefPhase = seconds 0,
+                looperDefFunc = atomically $ modifyTVar' v succ
               }
       a <- async $ runLoopers [l]
       waitNominalDiffTime $ seconds 0.015
@@ -52,11 +63,11 @@ spec = do
       v <- newTVarIO (0 :: Int)
       let l =
             LooperDef
-              { looperDefName = "l"
-              , looperDefEnabled = True
-              , looperDefPeriod = seconds 0.01
-              , looperDefPhase = seconds 0.02
-              , looperDefFunc = atomically $ modifyTVar' v succ
+              { looperDefName = "l",
+                looperDefEnabled = True,
+                looperDefPeriod = seconds 0.01,
+                looperDefPhase = seconds 0.02,
+                looperDefFunc = atomically $ modifyTVar' v succ
               }
       a <- async $ runLoopers [l]
       waitNominalDiffTime $ seconds 0.015
@@ -69,28 +80,28 @@ spec = do
       v3 <- newTVarIO (0 :: Int)
       let l1 =
             LooperDef
-              { looperDefName = "l1"
-              , looperDefEnabled = True
-              , looperDefPeriod = seconds 0.01
-              , looperDefPhase = seconds 0
-              , looperDefFunc =
+              { looperDefName = "l1",
+                looperDefEnabled = True,
+                looperDefPeriod = seconds 0.1,
+                looperDefPhase = seconds 0,
+                looperDefFunc =
                   atomically $ do
                     modifyTVar' v1 succ
                     modifyTVar' v2 succ
               }
       let l2 =
             LooperDef
-              { looperDefName = "l2"
-              , looperDefEnabled = True
-              , looperDefPeriod = seconds 0.005
-              , looperDefPhase = seconds 0.005
-              , looperDefFunc =
+              { looperDefName = "l2",
+                looperDefEnabled = True,
+                looperDefPeriod = seconds 0.05,
+                looperDefPhase = seconds 0.05,
+                looperDefFunc =
                   atomically $ do
                     modifyTVar' v2 succ
                     modifyTVar' v3 succ
               }
       a <- async $ runLoopers [l1, l2]
-      waitNominalDiffTime $ seconds 0.0225
+      waitNominalDiffTime $ seconds 0.225
       cancel a
       r1 <- readTVarIO v1
       r2 <- readTVarIO v2
@@ -104,14 +115,14 @@ spec = do
           inc2 = atomically $ modifyTVar' v2 succ
       let l =
             LooperDef
-              { looperDefName = "l"
-              , looperDefEnabled = True
-              , looperDefPeriod = seconds 0.01
-              , looperDefPhase = seconds 0
-              , looperDefFunc = inc1
+              { looperDefName = "l",
+                looperDefEnabled = True,
+                looperDefPeriod = seconds 0.1,
+                looperDefPhase = seconds 0,
+                looperDefFunc = inc1
               }
       a <- async $ runLoopersRaw (const $ pure ()) (\ld -> looperDefFunc ld >> inc2) [l]
-      waitNominalDiffTime $ seconds 0.015
+      waitNominalDiffTime $ seconds 0.15
       cancel a
       r1 <- readTVarIO v1
       r2 <- readTVarIO v2
@@ -123,14 +134,14 @@ spec = do
           inc2 = atomically $ modifyTVar' v2 succ
       let l =
             LooperDef
-              { looperDefName = "l"
-              , looperDefEnabled = True
-              , looperDefPeriod = seconds 0.01
-              , looperDefPhase = seconds 0
-              , looperDefFunc = inc1 >> waitNominalDiffTime (seconds 0.015)
+              { looperDefName = "l",
+                looperDefEnabled = True,
+                looperDefPeriod = seconds 0.1,
+                looperDefPhase = seconds 0,
+                looperDefFunc = inc1 >> waitNominalDiffTime (seconds 0.15)
               }
       a <- async $ runLoopersRaw (const $ inc2) looperDefFunc [l]
-      waitNominalDiffTime $ seconds 0.035
+      waitNominalDiffTime $ seconds 0.35
       cancel a
       r1 <- readTVarIO v1
       r2 <- readTVarIO v2
@@ -143,12 +154,12 @@ parserSucceedsWith parser args expectedValue =
     AP.Failure fp ->
       let (err, ec) = renderFailure fp "test"
        in expectationFailure $
-          unlines ["Failed to parse:", err, "would have resulted in exit code", show ec]
+            unlines ["Failed to parse:", err, "would have resulted in exit code", show ec]
     AP.CompletionInvoked _ -> expectationFailure "Tried to invoke a completion, should not happen"
   where
     parserPrefs :: ParserPrefs
     parserPrefs =
       defaultPrefs
-        { prefShowHelpOnError = True
-        , prefShowHelpOnEmpty = True
+        { prefShowHelpOnError = True,
+          prefShowHelpOnEmpty = True
         }
