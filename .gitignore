@@ -2,3 +2,4 @@
 *~
 result*
 stack.yaml.lock
+.pre-commit-config.yaml
