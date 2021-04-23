@@ -1,11 +1,19 @@
-resolver: lts-15.15
+resolver: lts-16.12
 packages:
-- .
+- looper
 extra-deps:
-- yamlparse-applicative-0.1.0.2
 - envparse-0.4.1
+- github: NorfairKing/yamlparse-applicative
+  commit: 7a329d06ffa45595963cf98f34910887115eb471
+  subdirs:
+    - yamlparse-applicative
+- github: NorfairKing/safe-coloured-text
+  commit: 2c8698978faf5556a6f928c5a55c797c3a262808
+  subdirs:
+    - safe-coloured-text
+    - safe-coloured-text-terminfo
 - github: NorfairKing/sydtest
-  commit: 7f2c040d835ea623f67382a213a0a1676e453e64
+  commit: 5e99c4fe56152d71982dcfba8bef4c79e19a9c8f
   subdirs:
     - sydtest
     - sydtest-discover

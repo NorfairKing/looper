@@ -5,13 +5,6 @@
 
 packages:
 - completed:
-    hackage: yamlparse-applicative-0.1.0.2@sha256:bda91f2818c1b5b124963931cb7f9a4e5758d026c09713e9ae2234534062747d,2133
-    pantry-tree:
-      size: 799
-      sha256: d7f9dc8e45e6c100a902f0595e6090169705d9451793ef1cb896237334a1b529
-  original:
-    hackage: yamlparse-applicative-0.1.0.2
-- completed:
     hackage: envparse-0.4.1@sha256:989902e6368532548f61de1fa245ad2b39176cddd8743b20071af519a709ce30,2842
     pantry-tree:
       size: 1180
@@ -19,34 +12,73 @@ packages:
   original:
     hackage: envparse-0.4.1
 - completed:
-    size: 237673
-    subdir: sydtest
-    url: https://github.com/NorfairKing/sydtest/archive/7f2c040d835ea623f67382a213a0a1676e453e64.tar.gz
-    name: sydtest
-    version: 0.0.0.0
-    sha256: 16a29108fd574d9fcca0328f61c689e0ddb87dd7b341c489692b4919ef158729
+    size: 19641
+    subdir: yamlparse-applicative
+    url: https://github.com/NorfairKing/yamlparse-applicative/archive/7a329d06ffa45595963cf98f34910887115eb471.tar.gz
+    name: yamlparse-applicative
+    version: 0.1.0.3
+    sha256: e94c9f4ca5902713a50fad8eab3e27f1c8fcbe92850a423dc54d6f24b7b440b1
     pantry-tree:
-      size: 2426
-      sha256: fdb20387589c61a48b717fcfc7556ae30aa7280ce25ab54e4f2ce0cd6f212bae
+      size: 874
+      sha256: 1cb2978576350d3825021f29b99cd16650d484d11c660324646112932a4e8438
+  original:
+    subdir: yamlparse-applicative
+    url: https://github.com/NorfairKing/yamlparse-applicative/archive/7a329d06ffa45595963cf98f34910887115eb471.tar.gz
+- completed:
+    size: 278767
+    subdir: safe-coloured-text
+    url: https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz
+    name: safe-coloured-text
+    version: 0.0.0.0
+    sha256: 061c69a1c1a2cbb1736754cac7e35038153748f490b8cf5014ba9d4db9cea74f
+    pantry-tree:
+      size: 427
+      sha256: 946034326b05c263569703fa14d9ee8250f42b1f2e35b95b85dfa5f04e8c3511
+  original:
+    subdir: safe-coloured-text
+    url: https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz
+- completed:
+    size: 278767
+    subdir: safe-coloured-text-terminfo
+    url: https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz
+    name: safe-coloured-text-terminfo
+    version: 0.0.0.0
+    sha256: 061c69a1c1a2cbb1736754cac7e35038153748f490b8cf5014ba9d4db9cea74f
+    pantry-tree:
+      size: 320
+      sha256: 40852129a3a765c08df57c65436de69ce0471ef35e0bde128a7e0e0d732e5403
+  original:
+    subdir: safe-coloured-text-terminfo
+    url: https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz
+- completed:
+    size: 267392
+    subdir: sydtest
+    url: https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz
+    name: sydtest
+    version: 0.1.0.0
+    sha256: 87b0da5e0c34e0c255929cf1eedb7ab10d348280125c7ff0ddc3a18753ab58a0
+    pantry-tree:
+      size: 3050
+      sha256: 13edd30ac0ffc8545f9a0217ecae6fe82365729be54464588dd68b37400a1edd
   original:
     subdir: sydtest
-    url: https://github.com/NorfairKing/sydtest/archive/7f2c040d835ea623f67382a213a0a1676e453e64.tar.gz
+    url: https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz
 - completed:
-    size: 237673
+    size: 267392
     subdir: sydtest-discover
-    url: https://github.com/NorfairKing/sydtest/archive/7f2c040d835ea623f67382a213a0a1676e453e64.tar.gz
+    url: https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz
     name: sydtest-discover
     version: 0.0.0.0
-    sha256: 16a29108fd574d9fcca0328f61c689e0ddb87dd7b341c489692b4919ef158729
+    sha256: 87b0da5e0c34e0c255929cf1eedb7ab10d348280125c7ff0ddc3a18753ab58a0
     pantry-tree:
-      size: 283
-      sha256: bfa2c16ef6b643da28484919a0eec18d195ded030e28f6a1981f8fdb527732a4
+      size: 382
+      sha256: 744bf0092322ef98e7f11027a6c1295b4dfccda56be12ed44c1c16581c59bd6d
   original:
     subdir: sydtest-discover
-    url: https://github.com/NorfairKing/sydtest/archive/7f2c040d835ea623f67382a213a0a1676e453e64.tar.gz
+    url: https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz
 snapshots:
 - completed:
-    size: 496112
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/15/15.yaml
-    sha256: 86169722ad0056ffc9eacc157ef80ee21d7024f92c0d2961c89ccf432db230a3
-  original: lts-15.15
+    size: 532377
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/12.yaml
+    sha256: f914cfa23fef85bdf895e300a8234d9d0edc2dbec67f4bc9c53f85867c50eab6
+  original: lts-16.12
