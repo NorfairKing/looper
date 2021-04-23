@@ -39,10 +39,6 @@ jobs:
       run: |
         stack build --system-ghc --only-dependencies
 
-    - name: Build autoexporter
-      run: |
-        stack install --system-ghc autoexporter
-
     - name: Build
       run: |
         stack build --system-ghc --test --bench --no-run-tests --no-run-benchmarks
