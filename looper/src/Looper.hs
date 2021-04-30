@@ -73,8 +73,8 @@ hours = minutes . (* 60)
 -- | A structure to parse command-line flags for a looper into
 data LooperFlags = LooperFlags
   { looperFlagEnabled :: Maybe Bool,
-    looperFlagPhase :: Maybe Int, -- Seconds
-    looperFlagPeriod :: Maybe Int -- Seconds
+    looperFlagPhase :: Maybe Word, -- Seconds
+    looperFlagPeriod :: Maybe Word -- Seconds
   }
   deriving (Show, Eq, Generic)
 
@@ -131,8 +131,8 @@ doubleSwitch name helpText mods =
 -- | A structure to parse environment variables for a looper into
 data LooperEnvironment = LooperEnvironment
   { looperEnvEnabled :: Maybe Bool,
-    looperEnvPhase :: Maybe Int, -- Seconds
-    looperEnvPeriod :: Maybe Int -- Seconds
+    looperEnvPhase :: Maybe Word, -- Seconds
+    looperEnvPeriod :: Maybe Word -- Seconds
   }
   deriving (Show, Eq, Generic)
 
@@ -172,8 +172,8 @@ looperEnvironmentParser name =
 -- | A structure to configuration for a looper into
 data LooperConfiguration = LooperConfiguration
   { looperConfEnabled :: Maybe Bool,
-    looperConfPhase :: Maybe Int,
-    looperConfPeriod :: Maybe Int
+    looperConfPhase :: Maybe Word,
+    looperConfPeriod :: Maybe Word
   }
   deriving (Show, Eq, Generic)
 
