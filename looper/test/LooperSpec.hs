@@ -50,12 +50,12 @@ spec = do
             LooperDef
               { looperDefName = "l1",
                 looperDefEnabled = True,
-                looperDefPeriod = seconds 0.01,
+                looperDefPeriod = seconds 0.1,
                 looperDefPhase = seconds 0,
                 looperDefFunc = atomically $ modifyTVar' v succ
               }
       a <- async $ runLoopers [l]
-      waitNominalDiffTime $ seconds 0.015
+      waitNominalDiffTime $ seconds 0.15
       cancel a
       r <- readTVarIO v
       r `shouldBe` 2
@@ -65,12 +65,12 @@ spec = do
             LooperDef
               { looperDefName = "l",
                 looperDefEnabled = True,
-                looperDefPeriod = seconds 0.01,
-                looperDefPhase = seconds 0.02,
+                looperDefPeriod = seconds 0.1,
+                looperDefPhase = seconds 0.2,
                 looperDefFunc = atomically $ modifyTVar' v succ
               }
       a <- async $ runLoopers [l]
-      waitNominalDiffTime $ seconds 0.015
+      waitNominalDiffTime $ seconds 0.15
       cancel a
       r <- readTVarIO v
       r `shouldBe` 0
