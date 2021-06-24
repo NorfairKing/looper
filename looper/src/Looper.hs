@@ -186,7 +186,7 @@ instance YamlSchema LooperConfiguration where
   yamlSchema =
     objectParser "LooperConfiguration" $
       LooperConfiguration
-        <$> optionalField "enabled" "Enable this looper"
+        <$> (optionalField "enabled" "Enable this looper" <|> optionalField "enabled" "Enable this looper")
         <*> optionalField "phase" "The amount of time to wait before starting the looper the first time, in seconds"
         <*> optionalField "period" "The amount of time to wait between runs of the looper, in seconds"
 
