@@ -1,5 +1,5 @@
-{-# LANGUAGE CPP #-}
 {-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
@@ -25,23 +25,19 @@ module Looper
   )
 where
 
+import Autodocodec
 import Control.Applicative
 import Control.Monad
-import Data.Aeson
+import Data.Aeson (FromJSON, ToJSON)
 import Data.Maybe
 import Data.Text (Text)
 import Data.Time
-#if !MIN_VERSION_base(4,11,0)
-import Data.Monoid
-#endif
-
 import qualified Env
 import GHC.Generics (Generic)
 import Options.Applicative as OptParse
 import qualified System.Environment as System (getEnvironment)
 import UnliftIO
 import UnliftIO.Concurrent
-import YamlParse.Applicative as YamlParse
 
 -- | A looper definition
 data LooperDef m = LooperDef
@@ -175,20 +171,19 @@ data LooperConfiguration = LooperConfiguration
     looperConfPhase :: Maybe Word,
     looperConfPeriod :: Maybe Word
   }
-  deriving (Show, Eq, Generic)
+  deriving stock (Show, Eq, Generic)
+  deriving (FromJSON, ToJSON) via (Autodocodec LooperConfiguration)
 
--- | You can parse Data.Aeson's JSON or Data.Yaml's YAML to parse a 'LooperConfiguration'.
--- You can also use Data.Yaml.Config.
-instance FromJSON LooperConfiguration where
-  parseJSON = viaYamlSchema
-
-instance YamlSchema LooperConfiguration where
-  yamlSchema =
-    objectParser "LooperConfiguration" $
+instance HasCodec LooperConfiguration where
+  codec =
+    object "LooperConfiguration" $
       LooperConfiguration
-        <$> (optionalField "enable" "Enable this looper" <|> optionalField "enabled" "Enable this looper")
-        <*> optionalField "phase" "The amount of time to wait before starting the looper the first time, in seconds"
-        <*> optionalField "period" "The amount of time to wait between runs of the looper, in seconds"
+        <$> parseAlternative
+          (optionalField "enable" "Enable this looper")
+          (optionalField "enabled" "Enable this looper")
+          .= looperConfEnabled
+        <*> optionalField "phase" "The amount of time to wait before starting the looper the first time, in seconds" .= looperConfPhase
+        <*> optionalField "period" "The amount of time to wait between runs of the looper, in seconds" .= looperConfPeriod
 
 -- | Settings that you might want to pass into a looper using 'mkLooperDef'
 data LooperSettings = LooperSettings

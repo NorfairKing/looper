@@ -1,4 +1,16 @@
 {
+    "autodocodec": {
+        "branch": "master",
+        "description": null,
+        "homepage": null,
+        "owner": "NorfairKing",
+        "repo": "autodocodec",
+        "rev": "c1687a96fcd98be2e4aece275342dbb39011be19",
+        "sha256": "0nwlrn9r08aq1zcmcrf0ycg1304cz9n0139hr6v1sxynsmcyaw4a",
+        "type": "tarball",
+        "url": "https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "gitignore": {
         "branch": "master",
         "description": "Nix function for filtering local git sources",
@@ -53,10 +65,10 @@
         "homepage": "https://cs-syd.eu/posts/2021-03-07-safe-coloured-text",
         "owner": "NorfairKing",
         "repo": "safe-coloured-text",
-        "rev": "2c8698978faf5556a6f928c5a55c797c3a262808",
-        "sha256": "09gj4nqn5yi86xfld42hgs4ywq54rsb42ilnsqammai4gdz73acp",
+        "rev": "7f157485e55528648a95edf3508a122b2e55779e",
+        "sha256": "0ayxfay78s4rlir3ls76bb5kw2fxwnj1kak9lwd86zvdqjwl02l5",
         "type": "tarball",
-        "url": "https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz",
+        "url": "https://github.com/NorfairKing/safe-coloured-text/archive/7f157485e55528648a95edf3508a122b2e55779e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "sydtest": {
@@ -65,22 +77,10 @@
         "homepage": "",
         "owner": "NorfairKing",
         "repo": "sydtest",
-        "rev": "5e99c4fe56152d71982dcfba8bef4c79e19a9c8f",
-        "sha256": "0jxzj2zzz6k75p1zv6daz5i7kn0b5j3cqv0dr97vpzsaad1dmx16",
+        "rev": "e75c55b920936e344b779093b2a0318fb35d1770",
+        "sha256": "086mr29c5a3fysz8nx06a0j8g1asy63xpqpi546bydxqxny9hyvl",
         "type": "tarball",
-        "url": "https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "yamlparse-applicative": {
-        "branch": "master",
-        "description": "An optparse-applicative -style explainable yaml parser",
-        "homepage": "https://cs-syd.eu/posts/2020-06-28-yamlparse-applicative",
-        "owner": "NorfairKing",
-        "repo": "yamlparse-applicative",
-        "rev": "7a329d06ffa45595963cf98f34910887115eb471",
-        "sha256": "0mffjivg17qbyap6a4g33m9dpkf1v10l5wczwar0b21d642bz6w4",
-        "type": "tarball",
-        "url": "https://github.com/NorfairKing/yamlparse-applicative/archive/7a329d06ffa45595963cf98f34910887115eb471.tar.gz",
+        "url": "https://github.com/NorfairKing/sydtest/archive/e75c55b920936e344b779093b2a0318fb35d1770.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

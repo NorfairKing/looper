@@ -1,10 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeApplications #-}
 
 module LooperSpec
   ( spec,
   )
 where
 
+import Autodocodec.Yaml
 import Looper
 import Options.Applicative as AP
 import Test.Syd
@@ -43,6 +45,11 @@ spec = do
               looperFlagPeriod = Nothing
             }
         )
+
+  describe "Configuration" $ do
+    it "has the same schema as before" $
+      pureGoldenByteStringFile "test_resources/configuration.txt" (renderColouredSchemaViaCodec @LooperConfiguration)
+
   describe "runLoopers" $ do
     it "runs one looper as intended" $ do
       v <- newTVarIO (0 :: Int)

@@ -12,70 +12,96 @@ packages:
   original:
     hackage: envparse-0.4.1
 - completed:
-    size: 19641
-    subdir: yamlparse-applicative
-    url: https://github.com/NorfairKing/yamlparse-applicative/archive/7a329d06ffa45595963cf98f34910887115eb471.tar.gz
-    name: yamlparse-applicative
-    version: 0.1.0.3
-    sha256: e94c9f4ca5902713a50fad8eab3e27f1c8fcbe92850a423dc54d6f24b7b440b1
-    pantry-tree:
-      size: 874
-      sha256: 1cb2978576350d3825021f29b99cd16650d484d11c660324646112932a4e8438
-  original:
-    subdir: yamlparse-applicative
-    url: https://github.com/NorfairKing/yamlparse-applicative/archive/7a329d06ffa45595963cf98f34910887115eb471.tar.gz
-- completed:
-    size: 278767
-    subdir: safe-coloured-text
-    url: https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz
-    name: safe-coloured-text
+    size: 52846
+    subdir: autodocodec
+    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    name: autodocodec
     version: 0.0.0.0
-    sha256: 061c69a1c1a2cbb1736754cac7e35038153748f490b8cf5014ba9d4db9cea74f
+    sha256: eeb289e92d65549345711249d74ee9fea2f80bcc7ec0860c79bc19a28d8add7e
+    pantry-tree:
+      size: 690
+      sha256: 2907870f0fd472204db7a3626435ed9af49f1770bb59d49c8971f4903e0cc3c5
+  original:
+    subdir: autodocodec
+    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+- completed:
+    size: 52846
+    subdir: autodocodec-schema
+    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    name: autodocodec-schema
+    version: 0.0.0.0
+    sha256: eeb289e92d65549345711249d74ee9fea2f80bcc7ec0860c79bc19a28d8add7e
+    pantry-tree:
+      size: 236
+      sha256: 678873d07d83aec0994396ca8bf414b8d683976aebed2280adb27a16c8222e02
+  original:
+    subdir: autodocodec-schema
+    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+- completed:
+    size: 52846
+    subdir: autodocodec-yaml
+    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    name: autodocodec-yaml
+    version: 0.0.0.0
+    sha256: eeb289e92d65549345711249d74ee9fea2f80bcc7ec0860c79bc19a28d8add7e
+    pantry-tree:
+      size: 441
+      sha256: a41f2f812b0db4bd43fb18c0919d0e26cbcaaa3a31dc23fa4ee01f8d1e2c893a
+  original:
+    subdir: autodocodec-yaml
+    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+- completed:
+    size: 36630
+    subdir: safe-coloured-text
+    url: https://github.com/NorfairKing/safe-coloured-text/archive/7f157485e55528648a95edf3508a122b2e55779e.tar.gz
+    name: safe-coloured-text
+    version: 0.1.0.0
+    sha256: b24f90ecbb906bfc71935fc34cbb08e339375a34e326be50dfd7c45ae457f189
     pantry-tree:
       size: 427
-      sha256: 946034326b05c263569703fa14d9ee8250f42b1f2e35b95b85dfa5f04e8c3511
+      sha256: bf43a24970a946ed4c8582ee0b6a1dd2b6597c6aef03f27def3b6ad6e2135e63
   original:
     subdir: safe-coloured-text
-    url: https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz
+    url: https://github.com/NorfairKing/safe-coloured-text/archive/7f157485e55528648a95edf3508a122b2e55779e.tar.gz
 - completed:
-    size: 278767
+    size: 36630
     subdir: safe-coloured-text-terminfo
-    url: https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz
+    url: https://github.com/NorfairKing/safe-coloured-text/archive/7f157485e55528648a95edf3508a122b2e55779e.tar.gz
     name: safe-coloured-text-terminfo
     version: 0.0.0.0
-    sha256: 061c69a1c1a2cbb1736754cac7e35038153748f490b8cf5014ba9d4db9cea74f
+    sha256: b24f90ecbb906bfc71935fc34cbb08e339375a34e326be50dfd7c45ae457f189
     pantry-tree:
       size: 320
       sha256: 40852129a3a765c08df57c65436de69ce0471ef35e0bde128a7e0e0d732e5403
   original:
     subdir: safe-coloured-text-terminfo
-    url: https://github.com/NorfairKing/safe-coloured-text/archive/2c8698978faf5556a6f928c5a55c797c3a262808.tar.gz
+    url: https://github.com/NorfairKing/safe-coloured-text/archive/7f157485e55528648a95edf3508a122b2e55779e.tar.gz
 - completed:
-    size: 267392
+    size: 283261
     subdir: sydtest
-    url: https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz
+    url: https://github.com/NorfairKing/sydtest/archive/e75c55b920936e344b779093b2a0318fb35d1770.tar.gz
     name: sydtest
-    version: 0.1.0.0
-    sha256: 87b0da5e0c34e0c255929cf1eedb7ab10d348280125c7ff0ddc3a18753ab58a0
+    version: 0.6.0.0
+    sha256: 2f7c417de87c5f645b6defaf7cad4f80447e369802b85528315f253b2067f3bd
     pantry-tree:
-      size: 3050
-      sha256: 13edd30ac0ffc8545f9a0217ecae6fe82365729be54464588dd68b37400a1edd
+      size: 3108
+      sha256: 7cc1164a021717504b20e5fc24a630870e183433a68c22470a641e2eb0cf9117
   original:
     subdir: sydtest
-    url: https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz
+    url: https://github.com/NorfairKing/sydtest/archive/e75c55b920936e344b779093b2a0318fb35d1770.tar.gz
 - completed:
-    size: 267392
+    size: 283261
     subdir: sydtest-discover
-    url: https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz
+    url: https://github.com/NorfairKing/sydtest/archive/e75c55b920936e344b779093b2a0318fb35d1770.tar.gz
     name: sydtest-discover
-    version: 0.0.0.0
-    sha256: 87b0da5e0c34e0c255929cf1eedb7ab10d348280125c7ff0ddc3a18753ab58a0
+    version: 0.0.0.1
+    sha256: 2f7c417de87c5f645b6defaf7cad4f80447e369802b85528315f253b2067f3bd
     pantry-tree:
-      size: 382
-      sha256: 744bf0092322ef98e7f11027a6c1295b4dfccda56be12ed44c1c16581c59bd6d
+      size: 434
+      sha256: 3889ae26601f20e36db5c699a3f5e60bec04b3fdf82d9808521e1102fd105880
   original:
     subdir: sydtest-discover
-    url: https://github.com/NorfairKing/sydtest/archive/5e99c4fe56152d71982dcfba8bef4c79e19a9c8f.tar.gz
+    url: https://github.com/NorfairKing/sydtest/archive/e75c55b920936e344b779093b2a0318fb35d1770.tar.gz
 snapshots:
 - completed:
     size: 532377

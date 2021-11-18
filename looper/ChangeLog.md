@@ -1,8 +1,12 @@
 # Changelog
   
-## [Unreleased]
+## [0.2.0.0] - 2021-11-18
 
-## [0.1.0.1] - 2020-05-10A
+### Changed
+
+* Started using `autodocodec` instead of `yamlparse-applicative`.
+
+## [0.1.0.1] - 2020-05-10
 
 ### Added
 

@@ -1,24 +1,27 @@
 name:                looper
-version:             0.1.0.1
+version:             0.2.0.0
 github:              "NorfairKing/looper"
 license:             BSD3
 author:              "Tom Sydney Kerckhove"
 maintainer:          "syd@cs-syd.eu"
-copyright:           "Copyright: (c) 2019-2020 Tom Sydney Kerckhove"
+copyright:           "Copyright: (c) 2019-2021 Tom Sydney Kerckhove"
 
 dependencies:
 - base >= 4.7 && < 5
+
+extra-source-files:
+- test_resources/**/*
 
 library:
   source-dirs: src
   dependencies:
   - aeson
+  - autodocodec
   - envparse
   - optparse-applicative
   - text
   - time
   - unliftio
-  - yamlparse-applicative >= 0.1
 
 
 tests:
@@ -31,6 +34,7 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
+    - autodocodec-yaml
     - looper
     - optparse-applicative
     - sydtest

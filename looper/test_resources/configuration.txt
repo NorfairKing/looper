@@ -1,0 +1,14 @@
+# LooperConfiguration
+[ [37menable[m: # [34moptional[m
+    # Enable this looper
+    [33m<boolean>[m
+, [37menabled[m: # [34moptional[m
+    # Enable this looper
+    [33m<boolean>[m
+]
+[37mphase[m: # [34moptional[m
+  # The amount of time to wait before starting the looper the first time, in seconds
+  [33m<number>[m # between [32m0[m and [32m18446744073709551615[m
+[37mperiod[m: # [34moptional[m
+  # The amount of time to wait between runs of the looper, in seconds
+  [33m<number>[m # between [32m0[m and [32m18446744073709551615[m
