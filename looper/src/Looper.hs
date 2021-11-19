@@ -176,14 +176,15 @@ data LooperConfiguration = LooperConfiguration
 
 instance HasCodec LooperConfiguration where
   codec =
-    object "LooperConfiguration" $
-      LooperConfiguration
-        <$> parseAlternative
-          (optionalField "enable" "Enable this looper")
-          (optionalField "enabled" "Enable this looper")
-          .= looperConfEnabled
-        <*> optionalField "phase" "The amount of time to wait before starting the looper the first time, in seconds" .= looperConfPhase
-        <*> optionalField "period" "The amount of time to wait between runs of the looper, in seconds" .= looperConfPeriod
+    named "LooperConfiguration" $
+      object "LooperConfiguration" $
+        LooperConfiguration
+          <$> parseAlternative
+            (optionalFieldOrNull "enable" "Enable this looper")
+            (optionalFieldOrNull "enabled" "Enable this looper")
+            .= looperConfEnabled
+          <*> optionalFieldOrNull "phase" "The amount of time to wait before starting the looper the first time, in seconds" .= looperConfPhase
+          <*> optionalFieldOrNull "period" "The amount of time to wait between runs of the looper, in seconds" .= looperConfPeriod
 
 -- | Settings that you might want to pass into a looper using 'mkLooperDef'
 data LooperSettings = LooperSettings
