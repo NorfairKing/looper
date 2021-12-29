@@ -5,51 +5,44 @@
 
 packages:
 - completed:
-    hackage: envparse-0.4.1@sha256:989902e6368532548f61de1fa245ad2b39176cddd8743b20071af519a709ce30,2842
-    pantry-tree:
-      size: 1180
-      sha256: 35044d67979fe2a5cff05cf8736a06a265592433cdd03e13a72908ceed892612
-  original:
-    hackage: envparse-0.4.1
-- completed:
-    size: 52846
+    size: 59455
     subdir: autodocodec
-    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    url: https://github.com/NorfairKing/autodocodec/archive/9880ec062f1166bdac50b8eb59c6dd010bc9af0c.tar.gz
     name: autodocodec
-    version: 0.0.0.0
-    sha256: eeb289e92d65549345711249d74ee9fea2f80bcc7ec0860c79bc19a28d8add7e
+    version: 0.0.1.0
+    sha256: 1e5836cd7e8a43a57c0af59639bc8d0d14811ce1c0b33da438c6eab2b12b1efd
     pantry-tree:
-      size: 690
-      sha256: 2907870f0fd472204db7a3626435ed9af49f1770bb59d49c8971f4903e0cc3c5
+      size: 789
+      sha256: bf5fcd9fcdb4c25d838def764d6fa17bc16176304ee6e5dd3606977dc53323cf
   original:
     subdir: autodocodec
-    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    url: https://github.com/NorfairKing/autodocodec/archive/9880ec062f1166bdac50b8eb59c6dd010bc9af0c.tar.gz
 - completed:
-    size: 52846
+    size: 59455
     subdir: autodocodec-schema
-    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    url: https://github.com/NorfairKing/autodocodec/archive/9880ec062f1166bdac50b8eb59c6dd010bc9af0c.tar.gz
     name: autodocodec-schema
-    version: 0.0.0.0
-    sha256: eeb289e92d65549345711249d74ee9fea2f80bcc7ec0860c79bc19a28d8add7e
+    version: 0.1.0.0
+    sha256: 1e5836cd7e8a43a57c0af59639bc8d0d14811ce1c0b33da438c6eab2b12b1efd
     pantry-tree:
-      size: 236
-      sha256: 678873d07d83aec0994396ca8bf414b8d683976aebed2280adb27a16c8222e02
+      size: 336
+      sha256: 29000820b2be961dcbae4128267736c7bc3dd8a2f43108bb736d5c75e590e5e1
   original:
     subdir: autodocodec-schema
-    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    url: https://github.com/NorfairKing/autodocodec/archive/9880ec062f1166bdac50b8eb59c6dd010bc9af0c.tar.gz
 - completed:
-    size: 52846
+    size: 59455
     subdir: autodocodec-yaml
-    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    url: https://github.com/NorfairKing/autodocodec/archive/9880ec062f1166bdac50b8eb59c6dd010bc9af0c.tar.gz
     name: autodocodec-yaml
-    version: 0.0.0.0
-    sha256: eeb289e92d65549345711249d74ee9fea2f80bcc7ec0860c79bc19a28d8add7e
+    version: 0.1.0.1
+    sha256: 1e5836cd7e8a43a57c0af59639bc8d0d14811ce1c0b33da438c6eab2b12b1efd
     pantry-tree:
-      size: 441
-      sha256: a41f2f812b0db4bd43fb18c0919d0e26cbcaaa3a31dc23fa4ee01f8d1e2c893a
+      size: 540
+      sha256: ab21512ebf56fe55b794451da17c5f746e42748fed0e1d03a50613d5410114ab
   original:
     subdir: autodocodec-yaml
-    url: https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz
+    url: https://github.com/NorfairKing/autodocodec/archive/9880ec062f1166bdac50b8eb59c6dd010bc9af0c.tar.gz
 - completed:
     size: 36630
     subdir: safe-coloured-text
@@ -104,7 +97,7 @@ packages:
     url: https://github.com/NorfairKing/sydtest/archive/e75c55b920936e344b779093b2a0318fb35d1770.tar.gz
 snapshots:
 - completed:
-    size: 532377
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/16/12.yaml
-    sha256: f914cfa23fef85bdf895e300a8234d9d0edc2dbec67f4bc9c53f85867c50eab6
-  original: lts-16.12
+    size: 586286
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/16.yaml
+    sha256: cdead65fca0323144b346c94286186f4969bf85594d649c49c7557295675d8a5
+  original: lts-18.16

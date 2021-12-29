@@ -5,10 +5,10 @@
         "homepage": null,
         "owner": "NorfairKing",
         "repo": "autodocodec",
-        "rev": "c1687a96fcd98be2e4aece275342dbb39011be19",
-        "sha256": "0nwlrn9r08aq1zcmcrf0ycg1304cz9n0139hr6v1sxynsmcyaw4a",
+        "rev": "9880ec062f1166bdac50b8eb59c6dd010bc9af0c",
+        "sha256": "1i4wq6rqdw40x1i4xy4qia6nzwrq4xpj1h805qg4i4svm6ggcmpw",
         "type": "tarball",
-        "url": "https://github.com/NorfairKing/autodocodec/archive/c1687a96fcd98be2e4aece275342dbb39011be19.tar.gz",
+        "url": "https://github.com/NorfairKing/autodocodec/archive/9880ec062f1166bdac50b8eb59c6dd010bc9af0c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "gitignore": {
@@ -36,15 +36,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "nixos-20.09",
+        "branch": "nixos-21.11",
         "description": "Nix Packages collection",
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4263ba5e133cc3fc699c1152ab5ee46ef668e675",
-        "sha256": "1nzqrdw0lhbldbs9r651zmgqpwhjhh9sssykhcl2155kgsfsrk7i",
+        "rev": "d887ac7aee92e8fc54dde9060d60d927afae9d69",
+        "sha256": "1bpgfv45b1yvrgpwdgc4fm4a6sav198yd41bsrvlmm3jn2wi6qx5",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/4263ba5e133cc3fc699c1152ab5ee46ef668e675.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/d887ac7aee92e8fc54dde9060d60d927afae9d69.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "pre-commit-hooks": {

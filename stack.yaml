@@ -1,10 +1,9 @@
-resolver: lts-16.12
+resolver: lts-18.16
 packages:
 - looper
 extra-deps:
-- envparse-0.4.1
 - github: NorfairKing/autodocodec
-  commit: c1687a96fcd98be2e4aece275342dbb39011be19
+  commit: 9880ec062f1166bdac50b8eb59c6dd010bc9af0c
   subdirs:
     - autodocodec
     - autodocodec-schema
