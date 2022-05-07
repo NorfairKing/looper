@@ -30,7 +30,7 @@ let
         if spec ? tag then "refs/tags/${spec.tag}" else
         abort "In git source '${name}': Please specify `ref`, `tag` or `branch`!";
     in
-    builtins.fetchGit { url = spec.repo; inherit (spec) rev;inherit ref; };
+    builtins.fetchGit { url = spec.repo; inherit (spec) rev; inherit ref; };
 
   fetch_local = spec: spec.path;
 

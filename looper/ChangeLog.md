@@ -1,5 +1,11 @@
 # Changelog
   
+## [0.2.0.1] - 2022-05-07
+
+### Changed
+
+* Made the runner function types more general.
+
 ## [0.2.0.0] - 2021-11-18
 
 ### Changed

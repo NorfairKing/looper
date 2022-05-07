@@ -7,7 +7,7 @@ in
 pkgs.haskell.lib.buildStackProject {
   name = "looper-shell";
   buildInputs = with pkgs; [
-    (import sources.niv { inherit pkgs; }).niv
+    (import sources.niv { }).niv
   ] ++ pre-commit.tools;
   shellHook = ''
     export TMPDIR=/tmp

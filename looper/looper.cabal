@@ -1,17 +1,18 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.34.7.
 --
 -- see: https://github.com/sol/hpack
 
 name:           looper
-version:        0.2.0.0
+version:        0.2.0.1
+description:    Configure and run recurring jobs indefinitely
 homepage:       https://github.com/NorfairKing/looper#readme
 bug-reports:    https://github.com/NorfairKing/looper/issues
 author:         Tom Sydney Kerckhove
 maintainer:     syd@cs-syd.eu
-copyright:      Copyright: (c) 2019-2021 Tom Sydney Kerckhove
-license:        BSD3
+copyright:      Copyright: (c) 2019-2022 Tom Sydney Kerckhove
+license:        MIT
 license-file:   LICENSE
 build-type:     Simple
 extra-source-files:

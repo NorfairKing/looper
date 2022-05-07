@@ -3,18 +3,18 @@ packages:
 - looper
 extra-deps:
 - github: NorfairKing/autodocodec
-  commit: 9880ec062f1166bdac50b8eb59c6dd010bc9af0c
+  commit: 38bd4865ff2dd40d342141b7fde9319f835d98c6
   subdirs:
     - autodocodec
     - autodocodec-schema
     - autodocodec-yaml
 - github: NorfairKing/safe-coloured-text
-  commit: 7f157485e55528648a95edf3508a122b2e55779e
+  commit: 71c5940a3b84eeb498304d8e584e7638f875d51b
   subdirs:
     - safe-coloured-text
     - safe-coloured-text-terminfo
 - github: NorfairKing/sydtest
-  commit: e75c55b920936e344b779093b2a0318fb35d1770
+  commit: e55fad0f6b8058a9b44c6c0d66bdd3c3be556d71
   subdirs:
     - sydtest
     - sydtest-discover

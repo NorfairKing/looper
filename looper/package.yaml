@@ -1,10 +1,11 @@
 name:                looper
-version:             0.2.0.0
+version:             0.2.0.1
 github:              "NorfairKing/looper"
-license:             BSD3
+license:             MIT
 author:              "Tom Sydney Kerckhove"
 maintainer:          "syd@cs-syd.eu"
-copyright:           "Copyright: (c) 2019-2021 Tom Sydney Kerckhove"
+copyright:           "Copyright: (c) 2019-2022 Tom Sydney Kerckhove"
+description:         Configure and run recurring jobs indefinitely
 
 dependencies:
 - base >= 4.7 && < 5
