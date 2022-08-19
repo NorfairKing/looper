@@ -48,7 +48,7 @@ spec = do
 
   describe "Configuration" $ do
     it "has the same schema as before" $
-      pureGoldenByteStringFile "test_resources/configuration.txt" (renderColouredSchemaViaCodec @LooperConfiguration)
+      pureGoldenTextFile "test_resources/configuration.txt" (renderColouredSchemaViaCodec @LooperConfiguration)
 
   describe "runLoopers" $ do
     it "runs one looper as intended" $ do
