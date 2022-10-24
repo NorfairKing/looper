@@ -1,10 +1,12 @@
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE NumericUnderscores #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
 module Looper
   ( LooperDef (..),
+    milliseconds,
     seconds,
     minutes,
     hours,
@@ -53,6 +55,13 @@ data LooperDef m = LooperDef
     looperDefFunc :: m ()
   }
   deriving (Generic)
+
+-- | Construct a 'NominalDiffTime' from a number of milliseconds
+--
+-- Note that scheduling can easily get in the way of accuracy at this
+-- level of granularity.
+milliseconds :: Double -> NominalDiffTime
+milliseconds = seconds . (/ 60)
 
 -- | Construct a 'NominalDiffTime' from a number of seconds
 seconds :: Double -> NominalDiffTime
@@ -298,4 +307,4 @@ runLoopersRaw onOverrun runLooper =
 --
 -- > waitNominalDiffTime ndt = liftIO $ threadDelay $ round (toRational ndt * (1000 * 1000))
 waitNominalDiffTime :: MonadIO m => NominalDiffTime -> m ()
-waitNominalDiffTime ndt = liftIO $ threadDelay $ round (toRational ndt * (1000 * 1000))
+waitNominalDiffTime ndt = liftIO $ threadDelay $ round (toRational ndt * 1_000_000)

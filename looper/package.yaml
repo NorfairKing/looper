@@ -1,16 +1,17 @@
-name:                looper
-version:             0.2.0.1
-github:              "NorfairKing/looper"
-license:             MIT
-author:              "Tom Sydney Kerckhove"
-maintainer:          "syd@cs-syd.eu"
-copyright:           "Copyright: (c) 2019-2022 Tom Sydney Kerckhove"
-description:         Configure and run recurring jobs indefinitely
+name: looper
+version: 0.2.0.1
+github: "NorfairKing/looper"
+license: MIT
+author: "Tom Sydney Kerckhove"
+maintainer: "syd@cs-syd.eu"
+copyright: "Copyright: (c) 2019-2022 Tom Sydney Kerckhove"
+description: Configure and run recurring jobs indefinitely
 
 dependencies:
 - base >= 4.7 && < 5
 
 extra-source-files:
+- ChangeLog.md
 - test_resources/**/*
 
 library:
@@ -24,12 +25,24 @@ library:
   - time
   - unliftio
 
+executables:
+  looper-weigh:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - looper
+    - timeout
+    - weigh
 
 tests:
   looper-test:
-    main:                Spec.hs
-    source-dirs:         test
-    build-tools:         sydtest-discover
+    main: Spec.hs
+    source-dirs: test
+    build-tools: sydtest-discover
     ghc-options:
     - -threaded
     - -rtsopts

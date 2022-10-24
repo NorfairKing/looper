@@ -50,7 +50,7 @@
   - {name: product, within: []} # Lazy accumulator
 
   # Functions involving division
-  - {name: Prelude.quot, within: []} # Partial, see https://github.com/NorfairKing/haskell-WAT#num-int
+  - {name: Prelude.quot, within: ["Looper"]} # Partial, see https://github.com/NorfairKing/haskell-WAT#num-int
   - {name: Prelude.div, within: []}
   - {name: Prelude.rem, within: []}
   - {name: Prelude.mod, within: []}

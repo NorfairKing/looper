@@ -1,26 +1,28 @@
-resolver: lts-19.6
+resolver: lts-19.32
 packages:
 - looper
 extra-deps:
 - github: NorfairKing/autodocodec
-  commit: 98135d2b24c4c52f56f53c6650a169aeec61c7f1
+  commit: b49e3f42012168006955e5e4c6a5dcf8e6f94ba6
   subdirs:
     - autodocodec
     - autodocodec-schema
     - autodocodec-yaml
+
 - github: NorfairKing/safe-coloured-text
-  commit: 675cb01fce5f46718416d7746de5b856ed90a63f
+  commit: f173907488eb51407a59c22cf36f422d872378e5
   subdirs:
     - safe-coloured-text
     - safe-coloured-text-terminfo
+
 - github: NorfairKing/sydtest
-  commit: 130de92053c1c3d60a8f45d509210415ffbea530
+  commit: 65dbb63fa32110d8e11fd9ae5a5b62449e9f53d9
   subdirs:
     - sydtest
     - sydtest-discover
 
 - github: NorfairKing/validity
-  commit: 8373ac5f0f02ad66f1b83c9bf572290430e84062
+  commit: 68c0e18aa350b1382e01e0d98c986b314b0340ce
   subdirs:
     - genvalidity
     - genvalidity-aeson
@@ -62,3 +64,4 @@ extra-deps:
     - validity-uuid
     - validity-vector
 
+- timeout-0.1.1@sha256:56c1d3321d7139d1f7ebf04d46c95d3a3f1c8c9e0f15666ae3ccd6bae6204b6e,1427
