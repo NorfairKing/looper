@@ -89,7 +89,8 @@ getLooperFlags ::
   String ->
   OptParse.Parser LooperFlags
 getLooperFlags name =
-  LooperFlags <$> doubleSwitch name (unwords ["enable the", name, "looper"]) mempty
+  LooperFlags
+    <$> doubleSwitch name (unwords ["enable the", name, "looper"]) mempty
     <*> option
       (Just <$> auto)
       ( mconcat
