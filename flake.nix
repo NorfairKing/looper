@@ -1,7 +1,10 @@
 {
   description = "looper";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.11";
+    nixpkgs-23_05.url = "github:NixOS/nixpkgs?ref=nixos-23.05";
+    nixpkgs-22_11.url = "github:NixOS/nixpkgs?ref=nixos-22.11";
+    nixpkgs-22_05.url = "github:NixOS/nixpkgs?ref=nixos-22.05";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     autodocodec.url = "github:NorfairKing/autodocodec";
     autodocodec.flake = false;
@@ -9,21 +12,22 @@
     safe-coloured-text.flake = false;
     sydtest.url = "github:NorfairKing/sydtest";
     sydtest.flake = false;
+    fast-myers-diff.url = "github:NorfairKing/fast-myers-diff";
+    fast-myers-diff.flake = false;
     validity.url = "github:NorfairKing/validity";
     validity.flake = false;
-    nixpkgs-22_11.url = "github:NixOS/nixpkgs?ref=nixos-22.11";
-    nixpkgs-22_05.url = "github:NixOS/nixpkgs?ref=nixos-22.05";
   };
 
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-23_05
     , nixpkgs-22_11
     , nixpkgs-22_05
-    , flake-utils
     , pre-commit-hooks
     , autodocodec
     , safe-coloured-text
+    , fast-myers-diff
     , sydtest
     , validity
     }:
@@ -35,6 +39,7 @@
           self.overlays.${system}
           (import (autodocodec + "/nix/overlay.nix"))
           (import (safe-coloured-text + "/nix/overlay.nix"))
+          (import (fast-myers-diff + "/nix/overlay.nix"))
           (import (sydtest + "/nix/overlay.nix"))
           (import (validity + "/nix/overlay.nix"))
         ];
@@ -51,6 +56,7 @@
             in pkgs'.haskellPackages.looper;
           allNixpkgs = {
             inherit
+              nixpkgs-23_05
               nixpkgs-22_11
               nixpkgs-22_05;
           };
