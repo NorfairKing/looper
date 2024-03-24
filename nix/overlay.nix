@@ -9,7 +9,6 @@ with final.haskell.lib;
           mkLooperOption = final.callPackage ./looper-option.nix { };
         };
       });
-      timeout = unmarkBroken (dontCheck super.timeout);
     });
   });
 }
