@@ -247,7 +247,7 @@ mkLooperDef name LooperSettings {..} func =
 -- see 'runLoopersIgnoreOverrun'
 --
 -- Note that this function will loop forever, you need to wrap it using 'async' yourself.
-runLoopers :: MonadUnliftIO m => [LooperDef m] -> m ()
+runLoopers :: (MonadUnliftIO m) => [LooperDef m] -> m ()
 runLoopers = runLoopersIgnoreOverrun looperDefFunc
 
 -- | Run loopers with a custom runner, ignoring any overruns
@@ -307,5 +307,5 @@ runLoopersRaw onOverrun runLooper =
 -- This takes care of the conversion to microseconds to pass to 'threadDelay' for you.
 --
 -- > waitNominalDiffTime ndt = liftIO $ threadDelay $ round (toRational ndt * (1000 * 1000))
-waitNominalDiffTime :: MonadIO m => NominalDiffTime -> m ()
+waitNominalDiffTime :: (MonadIO m) => NominalDiffTime -> m ()
 waitNominalDiffTime ndt = liftIO $ threadDelay $ round (toRational ndt * 1_000_000)
