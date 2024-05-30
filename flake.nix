@@ -5,6 +5,7 @@
     nixpkgs-23_05.url = "github:NixOS/nixpkgs?ref=nixos-23.05";
     nixpkgs-22_11.url = "github:NixOS/nixpkgs?ref=nixos-22.11";
     nixpkgs-22_05.url = "github:NixOS/nixpkgs?ref=nixos-22.05";
+    horizon-advance.url = "git+https://gitlab.horizon-haskell.net/package-sets/horizon-advance";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     autodocodec.url = "github:NorfairKing/autodocodec";
     autodocodec.flake = false;
@@ -24,6 +25,7 @@
     , nixpkgs-23_05
     , nixpkgs-22_11
     , nixpkgs-22_05
+    , horizon-advance
     , pre-commit-hooks
     , autodocodec
     , safe-coloured-text
@@ -33,27 +35,27 @@
     }:
     let
       system = "x86_64-linux";
-      pkgsFor = nixpkgs: import nixpkgs {
-        inherit system;
-        overlays = [
-          self.overlays.${system}
-          (import (autodocodec + "/nix/overlay.nix"))
-          (import (safe-coloured-text + "/nix/overlay.nix"))
-          (import (fast-myers-diff + "/nix/overlay.nix"))
-          (import (sydtest + "/nix/overlay.nix"))
-          (import (validity + "/nix/overlay.nix"))
-        ];
-      };
-      pkgs = pkgsFor nixpkgs;
+      nixpkgsFor = nixpkgs: import nixpkgs { inherit system; };
+      pkgs = nixpkgsFor nixpkgs;
+      allOverrides = pkgs.lib.composeManyExtensions [
+        (pkgs.callPackage (autodocodec + "/nix/overrides.nix") { })
+        (pkgs.callPackage (safe-coloured-text + "/nix/overrides.nix") { })
+        (pkgs.callPackage (fast-myers-diff + "/nix/overrides.nix") { })
+        (pkgs.callPackage (sydtest + "/nix/overrides.nix") { })
+        (pkgs.callPackage (validity + "/nix/overrides.nix") { })
+        self.overrides.${system}
+      ];
+      horizonPkgs = horizon-advance.legacyPackages.${system}.extend allOverrides;
+      haskellPackagesFor = nixpkgs: (nixpkgsFor nixpkgs).haskellPackages.extend allOverrides;
+      haskellPackages = haskellPackagesFor nixpkgs;
     in
     {
+      overrides.${system} = pkgs.callPackage ./nix/overrides.nix { };
       overlays.${system} = import ./nix/overlay.nix;
-      packages.${system}.default = pkgs.haskellPackages.looper;
+      packages.${system}.default = haskellPackages.looper;
       checks.${system} =
         let
-          backwardCompatibilityCheckFor = nixpkgs:
-            let pkgs' = pkgsFor nixpkgs;
-            in pkgs'.haskellPackages.looper;
+          backwardCompatibilityCheckFor = nixpkgs: (haskellPackagesFor nixpkgs).autodocodecRelease;
           allNixpkgs = {
             inherit
               nixpkgs-23_05
@@ -63,6 +65,7 @@
           backwardCompatibilityChecks = pkgs.lib.mapAttrs (_: nixpkgs: backwardCompatibilityCheckFor nixpkgs) allNixpkgs;
         in
         backwardCompatibilityChecks // {
+          forwardCompatibility = horizonPkgs.looper;
           release = self.packages.${system}.default;
           pre-commit = pre-commit-hooks.lib.${system}.run {
             src = ./.;
@@ -76,7 +79,7 @@
             };
           };
         };
-      devShells.${system}.default = pkgs.haskellPackages.shellFor {
+      devShells.${system}.default = haskellPackages.shellFor {
         name = "looper-shell";
         packages = (p:
           [ p.looper ]
