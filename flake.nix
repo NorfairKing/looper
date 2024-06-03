@@ -1,7 +1,8 @@
 {
   description = "looper";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
+    nixpkgs-23_11.url = "github:NixOS/nixpkgs?ref=nixos-23.11";
     nixpkgs-23_05.url = "github:NixOS/nixpkgs?ref=nixos-23.05";
     nixpkgs-22_11.url = "github:NixOS/nixpkgs?ref=nixos-22.11";
     nixpkgs-22_05.url = "github:NixOS/nixpkgs?ref=nixos-22.05";
@@ -22,6 +23,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-23_11
     , nixpkgs-23_05
     , nixpkgs-22_11
     , nixpkgs-22_05
@@ -58,6 +60,7 @@
           backwardCompatibilityCheckFor = nixpkgs: (haskellPackagesFor nixpkgs).autodocodecRelease;
           allNixpkgs = {
             inherit
+              nixpkgs-23_11
               nixpkgs-23_05
               nixpkgs-22_11
               nixpkgs-22_05;
@@ -81,22 +84,13 @@
         };
       devShells.${system}.default = haskellPackages.shellFor {
         name = "looper-shell";
-        packages = (p:
-          [ p.looper ]
-        );
+        packages = p: [ p.looper ];
         withHoogle = true;
         doBenchmark = true;
-        buildInputs = (with pkgs; [
+        buildInputs = with pkgs; [
           zlib
           cabal-install
-        ]) ++ (with pre-commit-hooks.packages.${system};
-          [
-            hlint
-            hpack
-            nixpkgs-fmt
-            ormolu
-            cabal2nix
-          ]);
+        ] ++ self.checks.${system}.pre-commit.enabledPackages;
         shellHook = self.checks.${system}.pre-commit.shellHook;
       };
     };

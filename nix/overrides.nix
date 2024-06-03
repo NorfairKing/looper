@@ -1,5 +1,6 @@
 { lib
 , haskell
+, callPackage
 , ...
 }:
 with lib;
@@ -8,7 +9,7 @@ self: super:
 {
   looper = (buildStrictly (self.callPackage ../looper { })).overrideAttrs (old: {
     passthru = (old.passthru or { }) // {
-      mkLooperOption = final.callPackage ./looper-option.nix { };
+      mkLooperOption = callPackage ./looper-option.nix { };
     };
   });
 }
