@@ -17,7 +17,7 @@ license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     ChangeLog.md
-    test_resources/configuration.txt
+    test_resources/man.txt
 
 source-repository head
   type: git
@@ -34,8 +34,7 @@ library
       aeson
     , autodocodec
     , base >=4.7 && <5
-    , envparse
-    , optparse-applicative
+    , opt-env-conf
     , text
     , time
     , unliftio
@@ -56,7 +55,8 @@ test-suite looper-test
       autodocodec-yaml
     , base >=4.7 && <5
     , looper
-    , optparse-applicative
+    , opt-env-conf
+    , opt-env-conf-test
     , sydtest
     , unliftio
   default-language: Haskell2010

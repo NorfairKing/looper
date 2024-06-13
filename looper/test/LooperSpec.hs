@@ -1,54 +1,24 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeApplications #-}
 
 module LooperSpec
   ( spec,
   )
 where
 
-import Autodocodec.Yaml
 import Looper
-import Options.Applicative as AP
+import OptEnvConf.Test
 import Test.Syd
 import UnliftIO
 
 spec :: Spec
 spec = do
-  describe "getLooperFlags" $ do
-    it "parses default values for an empty list of arguments" $ do
-      parserSucceedsWith
-        (getLooperFlags "test")
-        []
-        ( LooperFlags
-            { looperFlagEnabled = Nothing,
-              looperFlagPhase = Nothing,
-              looperFlagPeriod = Nothing
-            }
-        )
-    it "parses an enable flag correctly" $ do
-      parserSucceedsWith
-        (getLooperFlags "test")
-        ["--enable-test"]
-        ( LooperFlags
-            { looperFlagEnabled = Just True,
-              looperFlagPhase = Nothing,
-              looperFlagPeriod = Nothing
-            }
-        )
-    it "parses an disable flag correctly" $ do
-      parserSucceedsWith
-        (getLooperFlags "test")
-        ["--disable-test"]
-        ( LooperFlags
-            { looperFlagEnabled = Just False,
-              looperFlagPhase = Nothing,
-              looperFlagPeriod = Nothing
-            }
-        )
-
-  describe "Configuration" $ do
-    it "has the same schema as before" $
-      pureGoldenTextFile "test_resources/configuration.txt" (renderColouredSchemaViaCodec @LooperConfiguration)
+  describe "parseLooperSettings" $ do
+    it "is valid" $
+      parserLintTest $
+        parseLooperSettings "example"
+    it "renders the man page the same way" $
+      pureGoldenManPage "test_resources/man.txt" "looper" $
+        parseLooperSettings "example"
 
   describe "runLoopers" $ do
     it "runs one looper as intended" $ do
@@ -153,20 +123,3 @@ spec = do
       r1 <- readTVarIO v1
       r2 <- readTVarIO v2
       (r1, r2) `shouldBe` (3, 2)
-
-parserSucceedsWith :: (Show a, Eq a) => Parser a -> [String] -> a -> Expectation
-parserSucceedsWith parser args expectedValue =
-  case execParserPure parserPrefs (info parser mempty) args of
-    AP.Success r -> r `shouldBe` expectedValue
-    AP.Failure fp ->
-      let (err, ec) = renderFailure fp "test"
-       in expectationFailure $
-            unlines ["Failed to parse:", err, "would have resulted in exit code", show ec]
-    AP.CompletionInvoked _ -> expectationFailure "Tried to invoke a completion, should not happen"
-  where
-    parserPrefs :: ParserPrefs
-    parserPrefs =
-      defaultPrefs
-        { prefShowHelpOnError = True,
-          prefShowHelpOnEmpty = True
-        }

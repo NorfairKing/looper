@@ -19,8 +19,7 @@ library:
   dependencies:
   - aeson
   - autodocodec
-  - envparse
-  - optparse-applicative
+  - opt-env-conf
   - text
   - time
   - unliftio
@@ -37,6 +36,7 @@ tests:
     dependencies:
     - autodocodec-yaml
     - looper
-    - optparse-applicative
+    - opt-env-conf
+    - opt-env-conf-test
     - sydtest
     - unliftio
