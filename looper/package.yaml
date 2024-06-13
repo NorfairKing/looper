@@ -1,5 +1,5 @@
 name: looper
-version: 0.2.0.1
+version: 0.3.0.0
 github: "NorfairKing/looper"
 license: MIT
 author: "Tom Sydney Kerckhove"
@@ -17,10 +17,7 @@ extra-source-files:
 library:
   source-dirs: src
   dependencies:
-  - aeson
-  - autodocodec
-  - envparse
-  - optparse-applicative
+  - opt-env-conf
   - text
   - time
   - unliftio
@@ -35,8 +32,8 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - autodocodec-yaml
     - looper
-    - optparse-applicative
+    - opt-env-conf
+    - opt-env-conf-test
     - sydtest
     - unliftio

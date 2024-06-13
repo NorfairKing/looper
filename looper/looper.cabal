@@ -5,7 +5,7 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           looper
-version:        0.2.0.1
+version:        0.3.0.0
 description:    Configure and run recurring jobs indefinitely
 homepage:       https://github.com/NorfairKing/looper#readme
 bug-reports:    https://github.com/NorfairKing/looper/issues
@@ -17,7 +17,7 @@ license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     ChangeLog.md
-    test_resources/configuration.txt
+    test_resources/documentation.txt
 
 source-repository head
   type: git
@@ -31,11 +31,8 @@ library
   hs-source-dirs:
       src
   build-depends:
-      aeson
-    , autodocodec
-    , base >=4.7 && <5
-    , envparse
-    , optparse-applicative
+      base >=4.7 && <5
+    , opt-env-conf
     , text
     , time
     , unliftio
@@ -53,10 +50,10 @@ test-suite looper-test
   build-tool-depends:
       sydtest-discover:sydtest-discover
   build-depends:
-      autodocodec-yaml
-    , base >=4.7 && <5
+      base >=4.7 && <5
     , looper
-    , optparse-applicative
+    , opt-env-conf
+    , opt-env-conf-test
     , sydtest
     , unliftio
   default-language: Haskell2010

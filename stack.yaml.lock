@@ -82,6 +82,32 @@ packages:
   original:
     subdir: autodocodec-schema
     url: https://github.com/NorfairKing/autodocodec/archive/36779707f38ec3aeb0a591ff8043a63717c96ea2.tar.gz
+- completed:
+    name: opt-env-conf
+    pantry-tree:
+      sha256: 9dbbee2e9b578b883e5424b874b0ae193bd88b6752369102cd239e2c805c1a96
+      size: 1170
+    sha256: 5f504455f5e48969199681e165f0215368dd701d61281c90e331a3a5eed502e7
+    size: 72717
+    subdir: opt-env-conf
+    url: https://github.com/NorfairKing/opt-env-conf/archive/7f57bea95ab72e3c5b477e8ad11e9153160fc141.tar.gz
+    version: 0.2.0.0
+  original:
+    subdir: opt-env-conf
+    url: https://github.com/NorfairKing/opt-env-conf/archive/7f57bea95ab72e3c5b477e8ad11e9153160fc141.tar.gz
+- completed:
+    name: opt-env-conf-test
+    pantry-tree:
+      sha256: 68538efb192c20069b91d32d67eb8622468492fe49abad0044f0acd0080731db
+      size: 16865
+    sha256: 5f504455f5e48969199681e165f0215368dd701d61281c90e331a3a5eed502e7
+    size: 72717
+    subdir: opt-env-conf-test
+    url: https://github.com/NorfairKing/opt-env-conf/archive/7f57bea95ab72e3c5b477e8ad11e9153160fc141.tar.gz
+    version: 0.0.0.0
+  original:
+    subdir: opt-env-conf-test
+    url: https://github.com/NorfairKing/opt-env-conf/archive/7f57bea95ab72e3c5b477e8ad11e9153160fc141.tar.gz
 snapshots:
 - completed:
     sha256: 4be1ca5d31689b524a7f0f17a439bbe9136465213edc498e9a395899a670f2aa

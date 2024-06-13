@@ -1,17 +1,13 @@
-{ mkDerivation, aeson, autodocodec, autodocodec-yaml, base
-, envparse, lib, optparse-applicative, sydtest, sydtest-discover
-, text, time, unliftio
+{ mkDerivation, base, lib, opt-env-conf, opt-env-conf-test, sydtest
+, sydtest-discover, text, time, unliftio
 }:
 mkDerivation {
   pname = "looper";
-  version = "0.2.0.1";
+  version = "0.3.0.0";
   src = ./.;
-  libraryHaskellDepends = [
-    aeson autodocodec base envparse optparse-applicative text time
-    unliftio
-  ];
+  libraryHaskellDepends = [ base opt-env-conf text time unliftio ];
   testHaskellDepends = [
-    autodocodec-yaml base optparse-applicative sydtest unliftio
+    base opt-env-conf opt-env-conf-test sydtest unliftio
   ];
   testToolDepends = [ sydtest-discover ];
   homepage = "https://github.com/NorfairKing/looper#readme";

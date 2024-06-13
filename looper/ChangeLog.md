@@ -1,5 +1,11 @@
 # Changelog
   
+## [0.3.0.0] - 2024-07-18
+
+### Changed
+
+* Moved over to `opt-env-conf`.
+  
 ## [0.2.0.1] - 2022-05-07
 
 ### Changed
