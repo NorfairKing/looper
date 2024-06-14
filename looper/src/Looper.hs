@@ -1,3 +1,4 @@
+{-# LANGUAGE ApplicativeDo #-}
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE NumericUnderscores #-}
@@ -25,6 +26,7 @@ import Data.Text (Text)
 import Data.Time
 import GHC.Generics (Generic)
 import OptEnvConf
+import OptEnvConf.Casing
 import UnliftIO
 import UnliftIO.Concurrent
 
@@ -71,33 +73,35 @@ data LooperSettings = LooperSettings
   deriving (Show, Eq, Generic)
 
 parseLooperSettings :: String -> Parser LooperSettings
-parseLooperSettings looperName =
-  LooperSettings
-    <$> enableDisableSwitch
-      True
-      [ help $ unwords ["enable the", looperName, "looper"],
-        long looperName,
-        env "",
-        conf "enable"
-      ]
-    <*> setting
-      [ help $ unwords ["phase of the", looperName, "looper in seconds"],
-        reader auto,
-        option,
-        long $ looperName <> "-phase",
-        env "PHASE",
-        conf "phase",
-        metavar "SECONDS"
-      ]
-    <*> setting
-      [ help $ unwords ["period of the", looperName, "looper in seconds"],
-        reader auto,
-        option,
-        long $ looperName <> "-period",
-        env "PERIOD",
-        conf "period",
-        metavar "SECONDS"
-      ]
+parseLooperSettings looperName = do
+  looperSetEnabled <-
+    subConfig (toConfigCase looperName) $
+      enableDisableSwitch
+        True
+        [ help $ unwords ["enable the", looperName, "looper"],
+          option,
+          long looperName,
+          env looperName,
+          conf "enable"
+        ]
+  (looperSetPhase, looperSetPeriod) <- subAll looperName $ do
+    ph <-
+      setting
+        [ help $ unwords ["phase of the", looperName, "looper in seconds"],
+          reader auto,
+          option,
+          name "phase",
+          metavar "SECONDS"
+        ]
+    pe <-
+      setting
+        [ help $ unwords ["period of the", looperName, "looper in seconds"],
+          reader auto,
+          name "period",
+          metavar "SECONDS"
+        ]
+    pure (ph, pe)
+  pure LooperSettings {..}
 
 mkLooperDef ::
   -- | Name
