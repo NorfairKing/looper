@@ -21,7 +21,6 @@ module Looper
 where
 
 import Control.Monad
-import Data.Char as Char
 import Data.Text (Text)
 import Data.Time
 import GHC.Generics (Generic)
@@ -72,33 +71,33 @@ data LooperSettings = LooperSettings
   deriving (Show, Eq, Generic)
 
 parseLooperSettings :: String -> Parser LooperSettings
-parseLooperSettings name =
-  subConfig name $
-    prefixed (map toUpper name <> "_") $
-      LooperSettings
-        <$> enableDisableSwitch
-          True
-          [ help $ unwords ["enable the", name, "looper"],
-            long name,
-            env "",
-            conf "enable"
-          ]
-        <*> setting
-          [ help $ unwords ["the phase for the", name, "looper in seconds"],
-            reader auto,
-            option,
-            long $ name <> "-phase",
-            env "PHASE",
-            metavar "SECONDS"
-          ]
-        <*> setting
-          [ help $ unwords ["the period for the", name, "looper in seconds"],
-            reader auto,
-            option,
-            long $ name <> "-period",
-            env "PERIOD",
-            metavar "SECONDS"
-          ]
+parseLooperSettings looperName =
+  LooperSettings
+    <$> enableDisableSwitch
+      True
+      [ help $ unwords ["enable the", looperName, "looper"],
+        long looperName,
+        env "",
+        conf "enable"
+      ]
+    <*> setting
+      [ help $ unwords ["phase of the", looperName, "looper in seconds"],
+        reader auto,
+        option,
+        long $ looperName <> "-phase",
+        env "PHASE",
+        conf "phase",
+        metavar "SECONDS"
+      ]
+    <*> setting
+      [ help $ unwords ["period of the", looperName, "looper in seconds"],
+        reader auto,
+        option,
+        long $ looperName <> "-period",
+        env "PERIOD",
+        conf "period",
+        metavar "SECONDS"
+      ]
 
 mkLooperDef ::
   -- | Name
@@ -107,9 +106,9 @@ mkLooperDef ::
   -- | The function to loop
   m () ->
   LooperDef m
-mkLooperDef name LooperSettings {..} func =
+mkLooperDef n LooperSettings {..} func =
   LooperDef
-    { looperDefName = name,
+    { looperDefName = n,
       looperDefEnabled = looperSetEnabled,
       looperDefPeriod = looperSetPeriod,
       looperDefPhase = looperSetPhase,

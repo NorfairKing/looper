@@ -1,26 +1,37 @@
 [36mUsage: [m[33mlooper[m [37m--(enable|disable)-example[m [37m--example-phase[m [33mSECONDS[m [37m--example-period[m [33mSECONDS[m
 
-[36mAll settings:[m
-   env var:                  [37mEXAMPLE_DISABLE[m [33mANY[m        [34menable the example looper[m                   
-   [34menable the example looper[m                                                                        
-   switch:                   [37m--(enable|disable)-example[m [34menable the example looper[m                   
-   option:                   [37m--example-phase[m [33mSECONDS[m    [34mthe phase for the example looper in seconds[m 
-   env var:                  [37mEXAMPLE_PHASE[m [33mSECONDS[m                                                  
-   option:                   [37m--example-period[m [33mSECONDS[m   [34mthe period for the example looper in seconds[m
-   env var:                  [37mEXAMPLE_PERIOD[m [33mSECONDS[m                                                 
-
-[36mOptions:[m
-   [37m--(enable|disable)-example[m [34menable the example looper[m                    default: [33mTrue[m
-   [37m--example-phase[m            [34mthe phase for the example looper in seconds[m               
-   [37m--example-period[m           [34mthe period for the example looper in seconds[m              
-
-[36mEnvironment Variables:[m
-   [37mEXAMPLE_DISABLE[m [33mANY[m    [34menable the example looper[m                   
-   [37mEXAMPLE_PHASE[m [33mSECONDS[m  [34mthe phase for the example looper in seconds[m 
-   [37mEXAMPLE_PERIOD[m [33mSECONDS[m [34mthe period for the example looper in seconds[m
-
-[36mConfiguration Values:[m
+[36mAll settings[m:
   [34menable the example looper[m
-  [37mexample.enable[m:
-    [33m<boolean>[m
+  switch: [37m--(enable|disable)-example[m
+  env: [37mDISABLE[m [33mANY[m
+  config: [37menable[m: [33m<boolean>[m
+
+  [34mphase of the example looper in seconds[m
+  option: [37m--example-phase[m [33mSECONDS[m
+  env: [37mPHASE[m [33mSECONDS[m
+  config: [37mphase[m: [33m<number>[m
+  
+  [34mperiod of the example looper in seconds[m
+  option: [37m--example-period[m [33mSECONDS[m
+  env: [37mPERIOD[m [33mSECONDS[m
+  config: [37mperiod[m: [33m<number>[m
+  
+
+[36mOptions[m:
+  [37m--(enable|disable)-example[m   [34menable the example looper[m                 
+  [37m--example-phase[m              [34mphase of the example looper in seconds[m    
+  [37m--example-period[m             [34mperiod of the example looper in seconds[m   
+
+[36mEnvironment Variables[m:
+  [37mDISABLE[m [33mANY[m      [34menable the example looper[m              
+  [37mPHASE[m [33mSECONDS[m    [34mphase of the example looper in seconds[m 
+  [37mPERIOD[m [33mSECONDS[m   [34mperiod of the example looper in seconds[m
+
+[36mConfiguration Values[m:
+  [34menable the example looper[m
+  [37menable[m: [33m<boolean>[m
+  [34mphase of the example looper in seconds[m
+  [37mphase[m: [33m<number>[m
+  [34mperiod of the example looper in seconds[m
+  [37mperiod[m: [33m<number>[m
 
