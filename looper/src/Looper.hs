@@ -26,7 +26,6 @@ import Data.Text (Text)
 import Data.Time
 import GHC.Generics (Generic)
 import OptEnvConf
-import OptEnvConf.Casing
 import UnliftIO
 import UnliftIO.Concurrent
 
