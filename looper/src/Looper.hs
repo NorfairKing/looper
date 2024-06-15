@@ -76,14 +76,15 @@ parseLooperSettings :: String -> Parser LooperSettings
 parseLooperSettings looperName = do
   looperSetEnabled <-
     subConfig (toConfigCase looperName) $
-      enableDisableSwitch
-        True
-        [ help $ unwords ["enable the", looperName, "looper"],
-          option,
-          long looperName,
-          env looperName,
-          conf "enable"
-        ]
+      subEnv (toEnvCase looperName <> "_") $
+        enableDisableSwitch
+          True
+          [ help $ unwords ["enable the", looperName, "looper"],
+            option,
+            long looperName,
+            env "ENABLE",
+            conf "enable"
+          ]
   (looperSetPhase, looperSetPeriod) <- subAll looperName $ do
     ph <-
       setting

@@ -3,7 +3,7 @@
 [36mAll settings[m:
   [34menable the example looper[m
   switch: [37m--(enable|disable)-example[m
-  env: [37mDISABLE_EXAMPLE[m [33mANY[m
+  env: [37mEXAMPLE_ENABLE[m [33mBOOL[m
   config: [37mexample.enable[m: [33m<boolean>[m
 
   [34mphase of the example looper in seconds[m
@@ -23,7 +23,7 @@
   [37m--example-period[m             [34mperiod of the example looper in seconds[m   
 
 [36mEnvironment Variables[m:
-  [37mDISABLE_EXAMPLE[m [33mANY[m      [34menable the example looper[m              
+  [37mEXAMPLE_ENABLE[m [33mBOOL[m      [34menable the example looper[m              
   [37mEXAMPLE_PHASE[m [33mSECONDS[m    [34mphase of the example looper in seconds[m 
   [37mEXAMPLE_PERIOD[m [33mSECONDS[m   [34mperiod of the example looper in seconds[m
 
