@@ -6,19 +6,15 @@ module LooperSpec
 where
 
 import Looper
+import OptEnvConf
 import OptEnvConf.Test
 import Test.Syd
 import UnliftIO
 
 spec :: Spec
 spec = do
-  describe "parseLooperSettings" $ do
-    it "is valid" $
-      parserLintTest $
-        parseLooperSettings "example"
-    it "renders the man page the same way" $
-      pureGoldenManPage "test_resources/man.txt" "looper" $
-        parseLooperSettings "example"
+  parserLintSpec $ withLocalYamlConfig $ parseLooperSettings "example"
+  goldenParserReferenceDocumentationSpec (parseLooperSettings "example") "test_resources/documentation.txt" "looper"
 
   describe "runLoopers" $ do
     it "runs one looper as intended" $ do

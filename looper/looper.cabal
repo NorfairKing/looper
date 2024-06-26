@@ -17,7 +17,7 @@ license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     ChangeLog.md
-    test_resources/man.txt
+    test_resources/documentation.txt
 
 source-repository head
   type: git

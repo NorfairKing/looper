@@ -14,6 +14,8 @@
     safe-coloured-text.flake = false;
     sydtest.url = "github:NorfairKing/sydtest";
     sydtest.flake = false;
+    opt-env-conf.url = "github:NorfairKing/opt-env-conf";
+    opt-env-conf.flake = false;
     fast-myers-diff.url = "github:NorfairKing/fast-myers-diff";
     fast-myers-diff.flake = false;
     validity.url = "github:NorfairKing/validity";
@@ -33,17 +35,21 @@
     , safe-coloured-text
     , fast-myers-diff
     , sydtest
+    , opt-env-conf
     , validity
     }:
     let
       system = "x86_64-linux";
-      nixpkgsFor = nixpkgs: import nixpkgs { inherit system; };
+      nixpkgsFor = nixpkgs: import nixpkgs {
+        inherit system; config.allowUnfree = true;
+      };
       pkgs = nixpkgsFor nixpkgs;
       allOverrides = pkgs.lib.composeManyExtensions [
         (pkgs.callPackage (autodocodec + "/nix/overrides.nix") { })
         (pkgs.callPackage (safe-coloured-text + "/nix/overrides.nix") { })
         (pkgs.callPackage (fast-myers-diff + "/nix/overrides.nix") { })
         (pkgs.callPackage (sydtest + "/nix/overrides.nix") { })
+        (pkgs.callPackage (opt-env-conf + "/nix/overrides.nix") { })
         (pkgs.callPackage (validity + "/nix/overrides.nix") { })
         self.overrides.${system}
       ];

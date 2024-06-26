@@ -15,6 +15,11 @@ extra-deps:
     - autodocodec
     - autodocodec-yaml
     - autodocodec-schema
+- github: NorfairKing/opt-env-conf
+  commit: 90c5f8b31cf31819d339debc838cd0f029ce4728
+  subdirs:
+    - opt-env-conf
+    - opt-env-conf-test
 
 system-ghc: true
 nix:

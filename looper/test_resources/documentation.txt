@@ -18,9 +18,9 @@
   
 
 [36mOptions[m:
-  [37m--(enable|disable)-example[m   [34menable the example looper[m                 
-  [37m--example-phase[m              [34mphase of the example looper in seconds[m    
-  [37m--example-period[m             [34mperiod of the example looper in seconds[m   
+  [37m--(enable|disable)-example[m [34menable the example looper[m               
+  [37m--example-phase[m            [34mphase of the example looper in seconds[m  
+  [37m--example-period[m           [34mperiod of the example looper in seconds[m 
 
 [36mEnvironment Variables[m:
   [37mEXAMPLE_ENABLE[m [33mBOOL[m      [34menable the example looper[m              
