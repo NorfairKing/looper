@@ -17,8 +17,6 @@ extra-source-files:
 library:
   source-dirs: src
   dependencies:
-  - aeson
-  - autodocodec
   - opt-env-conf
   - text
   - time
@@ -34,7 +32,6 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - autodocodec-yaml
     - looper
     - opt-env-conf
     - opt-env-conf-test

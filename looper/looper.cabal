@@ -31,9 +31,7 @@ library
   hs-source-dirs:
       src
   build-depends:
-      aeson
-    , autodocodec
-    , base >=4.7 && <5
+      base >=4.7 && <5
     , opt-env-conf
     , text
     , time
@@ -52,8 +50,7 @@ test-suite looper-test
   build-tool-depends:
       sydtest-discover:sydtest-discover
   build-depends:
-      autodocodec-yaml
-    , base >=4.7 && <5
+      base >=4.7 && <5
     , looper
     , opt-env-conf
     , opt-env-conf-test

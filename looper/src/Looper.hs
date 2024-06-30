@@ -137,7 +137,7 @@ runLoopers = runLoopersIgnoreOverrun looperDefFunc
 --
 -- Note that this function will loop forever, you need to wrap it using 'async' yourself.
 runLoopersIgnoreOverrun ::
-  (MonadUnliftIO m, MonadUnliftIO n) =>
+  (MonadUnliftIO n) =>
   -- | Custom runner
   (LooperDef m -> n ()) ->
   -- | Loopers
@@ -157,7 +157,7 @@ runLoopersIgnoreOverrun = runLoopersRaw (const $ pure ())
 --
 -- Note that this function will loop forever, you need to wrap it using 'async' yourself.
 runLoopersRaw ::
-  (MonadUnliftIO m, MonadUnliftIO n) =>
+  (MonadUnliftIO n) =>
   -- | Overrun handler
   (LooperDef m -> n ()) ->
   -- | Runner
