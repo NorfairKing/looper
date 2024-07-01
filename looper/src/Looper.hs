@@ -71,8 +71,12 @@ data LooperSettings = LooperSettings
   }
   deriving (Show, Eq, Generic)
 
-parseLooperSettings :: String -> Parser LooperSettings
-parseLooperSettings looperName = do
+parseLooperSettings ::
+  String ->
+  NominalDiffTime ->
+  NominalDiffTime ->
+  Parser LooperSettings
+parseLooperSettings looperName defaultPhase defaultPeriod = do
   looperSetEnabled <-
     subConfig (toConfigCase looperName) $
       subEnv (toEnvCase looperName <> "_") $
@@ -91,14 +95,16 @@ parseLooperSettings looperName = do
           reader auto,
           option,
           name "phase",
-          metavar "SECONDS"
+          metavar "SECONDS",
+          value defaultPhase
         ]
     pe <-
       setting
         [ help $ unwords ["period of the", looperName, "looper in seconds"],
           reader auto,
           name "period",
-          metavar "SECONDS"
+          metavar "SECONDS",
+          value defaultPeriod
         ]
     pure (ph, pe)
   pure LooperSettings {..}
