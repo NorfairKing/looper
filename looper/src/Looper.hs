@@ -92,7 +92,7 @@ parseLooperSettings looperName defaultPhase defaultPeriod = do
     ph <-
       setting
         [ help $ unwords ["phase of the", looperName, "looper in seconds"],
-          reader auto,
+          reader (fromInteger <$> auto),
           option,
           name "phase",
           metavar "SECONDS",
@@ -101,7 +101,7 @@ parseLooperSettings looperName defaultPhase defaultPeriod = do
     pe <-
       setting
         [ help $ unwords ["period of the", looperName, "looper in seconds"],
-          reader auto,
+          reader (fromInteger <$> auto),
           name "period",
           metavar "SECONDS",
           value defaultPeriod
