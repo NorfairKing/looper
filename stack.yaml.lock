@@ -85,29 +85,29 @@ packages:
 - completed:
     name: opt-env-conf
     pantry-tree:
-      sha256: 4e6343d365910b369a79aec18a144cfba5f72a83fdefec44995eba520bbc9e4d
+      sha256: e9d4ffcc414fcda65ad0fa5a3317541b23da877fa52ff076484c52dd998b0caf
       size: 1069
-    sha256: 1587ec11ea7b1839e6c6938b2c4d8075e2a5682daf07d1790fc64e9cc8cf757e
-    size: 54612
+    sha256: b39d9cff88645ed8dc6a4d9e29ffec457fbfaef894bfec5ab29b724b3f60f649
+    size: 54963
     subdir: opt-env-conf
-    url: https://github.com/NorfairKing/opt-env-conf/archive/a9900b5e150d38488586df80c96a5b7576d13ff9.tar.gz
+    url: https://github.com/NorfairKing/opt-env-conf/archive/8b153141dfce39caaa5e8db5d58bacf2e34cc10b.tar.gz
     version: 0.0.0.0
   original:
     subdir: opt-env-conf
-    url: https://github.com/NorfairKing/opt-env-conf/archive/a9900b5e150d38488586df80c96a5b7576d13ff9.tar.gz
+    url: https://github.com/NorfairKing/opt-env-conf/archive/8b153141dfce39caaa5e8db5d58bacf2e34cc10b.tar.gz
 - completed:
     name: opt-env-conf-test
     pantry-tree:
-      sha256: d3c1f04bb6eeee722696325aec1f1a6ca3b00cd6d2b1f1104a386d07a523b4c7
-      size: 14263
-    sha256: 1587ec11ea7b1839e6c6938b2c4d8075e2a5682daf07d1790fc64e9cc8cf757e
-    size: 54612
+      sha256: 99e2224173733eb644e06ca2ff22a000b080f9998d2aa42b497b3efd19c62b80
+      size: 14339
+    sha256: b39d9cff88645ed8dc6a4d9e29ffec457fbfaef894bfec5ab29b724b3f60f649
+    size: 54963
     subdir: opt-env-conf-test
-    url: https://github.com/NorfairKing/opt-env-conf/archive/a9900b5e150d38488586df80c96a5b7576d13ff9.tar.gz
+    url: https://github.com/NorfairKing/opt-env-conf/archive/8b153141dfce39caaa5e8db5d58bacf2e34cc10b.tar.gz
     version: 0.0.0.0
   original:
     subdir: opt-env-conf-test
-    url: https://github.com/NorfairKing/opt-env-conf/archive/a9900b5e150d38488586df80c96a5b7576d13ff9.tar.gz
+    url: https://github.com/NorfairKing/opt-env-conf/archive/8b153141dfce39caaa5e8db5d58bacf2e34cc10b.tar.gz
 snapshots:
 - completed:
     sha256: 4be1ca5d31689b524a7f0f17a439bbe9136465213edc498e9a395899a670f2aa

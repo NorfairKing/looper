@@ -4,23 +4,23 @@
   [34menable the example looper[m
   switch: [37m--(enable|disable)-example[m
   env: [37mEXAMPLE_ENABLE[m [33mBOOL[m
-  config: [37mexample.enable[m:
-    # [32mor null[m
-    [33m<boolean>[m
+  config:
+    [37mexample.enable[m: # [32mor null[m
+      [33m<boolean>[m
 
   [34mphase of the example looper in seconds[m
   option: [37m--example-phase[m [33mSECONDS[m
   env: [37mEXAMPLE_PHASE[m [33mSECONDS[m
-  config: [37mexample.phase[m:
-    # [32mor null[m
-    [33m<number>[m
+  config:
+    [37mexample.phase[m: # [32mor null[m
+      [33m<number>[m
   
   [34mperiod of the example looper in seconds[m
   option: [37m--example-period[m [33mSECONDS[m
   env: [37mEXAMPLE_PERIOD[m [33mSECONDS[m
-  config: [37mexample.period[m:
-    # [32mor null[m
-    [33m<number>[m
+  config:
+    [37mexample.period[m: # [32mor null[m
+      [33m<number>[m
   
 
 [36mOptions[m:
