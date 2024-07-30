@@ -4,20 +4,20 @@ packages:
 
 extra-deps:
 - github: NorfairKing/safe-coloured-text
-  commit: 61f14d21b7399fe97da24e484c2f9fedaf532bb8
+  commit: 26b7657428f277f819a0831cbddddb7f4c5408f9
   subdirs:
   - safe-coloured-text
   - safe-coloured-text-layout
   - safe-coloured-text-gen
 - github: NorfairKing/autodocodec
-  commit: f2c0551cdb3f9829b97f76b927d0c83833f9ef7f
+  commit: c51eaad56acb0f9e6fa68ae7c1a14ba9dd8650c6
   subdirs:
     - autodocodec
     - autodocodec-nix
     - autodocodec-schema
     - autodocodec-yaml
 - github: NorfairKing/opt-env-conf
-  commit: aca7601a7bf2e322318acb600d91586441fc027c
+  commit: c675616c3f427d30dd26efd9cc64552deece229d
   subdirs:
     - opt-env-conf
     - opt-env-conf-test
