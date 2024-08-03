@@ -81,12 +81,12 @@ parseLooperSettings looperName defaultPhase defaultPeriod = do
     subConfig (toConfigCase looperName) $
       subEnv (toEnvCase looperName <> "_") $
         enableDisableSwitch
-          True
           [ help $ unwords ["enable the", looperName, "looper"],
             option,
             long looperName,
             env "ENABLE",
-            conf "enable"
+            conf "enable",
+            value True
           ]
   (looperSetPhase, looperSetPeriod) <- subAll looperName $ do
     ph <-

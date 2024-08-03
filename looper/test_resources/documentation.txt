@@ -1,30 +1,38 @@
-[36mUsage: [m[33mlooper[m [37m--(enable|disable)-example[m [37m--example-phase[m [33mSECONDS[m [37m--example-period[m [33mSECONDS[m
+[36mUsage: [m[33mlooper[m [36m[[m[37m--(enable|disable)-example[m[36m][m [36m[[m[37m--example-phase[m [33mSECONDS[m[36m][m [36m[[m[37m--example-period[m [33mSECONDS[m[36m][m
 
 [36mAll settings[m:
+  [34mShow this help text[m
+  switch: [37m-h[m[36m|[m[37m--help[m
+
+  [34mOutput version information[m
+  switch: [37m--version[m
+
   [34menable the example looper[m
   switch: [37m--(enable|disable)-example[m
   env: [37mEXAMPLE_ENABLE[m [33mBOOL[m
   config:
     [37mexample.enable[m: # [32mor null[m
       [33m<boolean>[m
+
   [34mphase of the example looper in seconds[m
-  default: [33m60s[m
   option: [37m--example-phase[m [33mSECONDS[m
   env: [37mEXAMPLE_PHASE[m [33mSECONDS[m
   config:
     [37mexample.phase[m: # [32mor null[m
       [33m<number>[m
-  
+  default: [33m60s[m
+
   [34mperiod of the example looper in seconds[m
-  default: [33m3600s[m
   option: [37m--example-period[m [33mSECONDS[m
   env: [37mEXAMPLE_PERIOD[m [33mSECONDS[m
   config:
     [37mexample.period[m: # [32mor null[m
       [33m<number>[m
-  
+  default: [33m3600s[m
 
 [36mOptions[m:
+  [37m-h[m[36m|[m[37m--help[m                  [34mShow this help text[m                                   
+  [37m--version[m                  [34mOutput version information[m                            
   [37m--(enable|disable)-example[m [34menable the example looper[m                             
   [37m--example-phase[m            [34mphase of the example looper in seconds[m  default: [33m60s[m  
   [37m--example-period[m           [34mperiod of the example looper in seconds[m default: [33m3600s[m
