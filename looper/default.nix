@@ -3,7 +3,7 @@
 }:
 mkDerivation {
   pname = "looper";
-  version = "0.3.0.0";
+  version = "0.3.0.1";
   src = ./.;
   libraryHaskellDepends = [ base opt-env-conf text time unliftio ];
   testHaskellDepends = [

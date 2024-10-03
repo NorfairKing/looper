@@ -17,11 +17,12 @@ module Looper
     runLoopers,
     runLoopersIgnoreOverrun,
     runLoopersRaw,
+    runLooperDef,
     waitNominalDiffTime,
   )
 where
 
-import Control.Monad
+import Data.Maybe
 import Data.Text (Text)
 import Data.Time
 import GHC.Generics (Generic)
@@ -170,10 +171,23 @@ runLoopersRaw ::
   (LooperDef m -> n ()) ->
   -- | Loopers
   [LooperDef m] ->
+  -- Returns unit because this finishes immediately if there are no loopers
   n ()
-runLoopersRaw onOverrun runLooper =
-  mapConcurrently_ $ \ld@LooperDef {..} ->
-    when looperDefEnabled $ do
+runLoopersRaw onOverrun runLooper defs =
+  mapConcurrently_ id $ mapMaybe (runLooperDef onOverrun runLooper) defs
+
+runLooperDef ::
+  (MonadUnliftIO n) =>
+  -- | Overrun handler
+  (LooperDef m -> n ()) ->
+  -- | Runner
+  (LooperDef m -> n ()) ->
+  -- | Loopers
+  LooperDef m ->
+  Maybe (n void)
+runLooperDef onOverrun runLooper ld@LooperDef {..} =
+  if looperDefEnabled
+    then Just $ do
       waitNominalDiffTime looperDefPhase
       let loop = do
             start <- liftIO getCurrentTime
@@ -186,6 +200,7 @@ runLoopersRaw onOverrun runLooper =
               else waitNominalDiffTime nextWait
             loop
       loop
+    else Nothing
 
 -- | Wait for a given 'NominalDiffTime'
 --

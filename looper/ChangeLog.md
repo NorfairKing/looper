@@ -1,5 +1,11 @@
 # Changelog
   
+## [0.3.0.1] - 2024-10-03
+
+### Added
+
+* `runLooperDef` to run an individual looper
+  
 ## [0.3.0.0] - 2024-07-18
 
 ### Changed

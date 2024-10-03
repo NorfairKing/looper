@@ -5,7 +5,7 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           looper
-version:        0.3.0.0
+version:        0.3.0.1
 description:    Configure and run recurring jobs indefinitely
 homepage:       https://github.com/NorfairKing/looper#readme
 bug-reports:    https://github.com/NorfairKing/looper/issues
