@@ -4,6 +4,7 @@
 {-# LANGUAGE NumericUnderscores #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 module Looper
   ( LooperDef (..),
@@ -14,17 +15,23 @@ module Looper
     LooperSettings (..),
     parseLooperSettings,
     mkLooperDef,
+    withLoopers,
     runLoopers,
+    withLoopersIgnoreOverrun,
     runLoopersIgnoreOverrun,
+    withLoopersRaw,
     runLoopersRaw,
     runLooperDef,
     waitNominalDiffTime,
   )
 where
 
+import Data.List.NonEmpty (NonEmpty (..))
+import qualified Data.List.NonEmpty as NE
 import Data.Maybe
 import Data.Text (Text)
 import Data.Time
+import Data.Void
 import GHC.Generics (Generic)
 import OptEnvConf
 import UnliftIO
@@ -126,6 +133,10 @@ mkLooperDef n LooperSettings {..} func =
       looperDefFunc = func
     }
 
+-- | Like 'runLoopers' but runs the loopers as background jobs.
+withLoopers :: (MonadUnliftIO m) => [LooperDef m] -> m a -> m a
+withLoopers = withLoopersIgnoreOverrun looperDefFunc
+
 -- | Simply run loopers
 --
 -- > runLoopers = runLoopersIgnoreOverrun looperDefFunc
@@ -135,6 +146,17 @@ mkLooperDef n LooperSettings {..} func =
 -- Note that this function will loop forever, you need to wrap it using 'async' yourself.
 runLoopers :: (MonadUnliftIO m) => [LooperDef m] -> m ()
 runLoopers = runLoopersIgnoreOverrun looperDefFunc
+
+-- | Like 'runLoopersIgnoreOverrun' but runs the loopers as background jobs.
+withLoopersIgnoreOverrun ::
+  (MonadUnliftIO n) =>
+  -- | Custom runner
+  (LooperDef m -> n ()) ->
+  -- | Loopers
+  [LooperDef m] ->
+  n a ->
+  n a
+withLoopersIgnoreOverrun = withLoopersRaw (const $ pure ())
 
 -- | Run loopers with a custom runner, ignoring any overruns
 --
@@ -151,6 +173,28 @@ runLoopersIgnoreOverrun ::
   [LooperDef m] ->
   n ()
 runLoopersIgnoreOverrun = runLoopersRaw (const $ pure ())
+
+-- | Like 'runLoopersRaw' but runs the loopers as background jobs.
+withLoopersRaw ::
+  forall m n a.
+  (MonadUnliftIO n) =>
+  -- | Overrun handler
+  (LooperDef m -> n ()) ->
+  -- | Runner
+  (LooperDef m -> n ()) ->
+  -- | Loopers
+  [LooperDef m] ->
+  --
+  n a ->
+  n a
+withLoopersRaw onOverrun runLooper defs func =
+  case NE.nonEmpty (mapMaybe (runLooperDef onOverrun runLooper) defs) of
+    Nothing -> func
+    Just looperThreads -> do
+      stopOrResult <- race (mapConcurrently id looperThreads) func
+      case stopOrResult :: Either (NonEmpty Void) a of
+        Left _ -> error "uninhabited."
+        Right result -> pure result
 
 -- | Run loopers, with a custom runner and overrun handler
 --
