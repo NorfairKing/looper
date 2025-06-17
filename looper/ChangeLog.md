@@ -1,5 +1,9 @@
 # Changelog
   
+## [0.4.0.0] - 2025-06-17
+
+* `parseLooperSettings` now takes an argument that dictates whether it should be enabled by default.
+
 ## [0.3.0.2] - 2024-10-03
 
 ### Added

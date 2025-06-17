@@ -81,10 +81,11 @@ data LooperSettings = LooperSettings
 
 parseLooperSettings ::
   String ->
+  Bool ->
   NominalDiffTime ->
   NominalDiffTime ->
   Parser LooperSettings
-parseLooperSettings looperName defaultPhase defaultPeriod = do
+parseLooperSettings looperName defaultEnabled defaultPhase defaultPeriod = do
   looperSetEnabled <-
     subConfig (toConfigCase looperName) $
       subEnv (toEnvCase looperName <> "_") $
@@ -94,7 +95,7 @@ parseLooperSettings looperName defaultPhase defaultPeriod = do
             long looperName,
             env "ENABLE",
             conf "enable",
-            value True
+            value defaultEnabled
           ]
   (looperSetPhase, looperSetPeriod) <- subAll looperName $ do
     ph <-

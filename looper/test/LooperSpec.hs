@@ -13,8 +13,8 @@ import UnliftIO
 
 spec :: Spec
 spec = do
-  parserLintSpec $ withLocalYamlConfig $ parseLooperSettings "example" (minutes 1) (minutes 60)
-  goldenParserReferenceDocumentationSpec (parseLooperSettings "example" (minutes 1) (minutes 60)) "test_resources/documentation.txt" "looper"
+  parserLintSpec $ withLocalYamlConfig $ parseLooperSettings "example" True (minutes 1) (minutes 60)
+  goldenParserReferenceDocumentationSpec (parseLooperSettings "example" True (minutes 1) (minutes 60)) "test_resources/documentation.txt" "looper"
 
   describe "runLoopers" $ do
     it "runs one looper as intended" $ do
