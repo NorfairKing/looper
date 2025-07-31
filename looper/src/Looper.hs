@@ -40,15 +40,15 @@ import UnliftIO.Concurrent
 -- | A looper definition
 data LooperDef m = LooperDef
   { -- | The name of the looper, can be useful for logging
-    looperDefName :: Text,
+    looperDefName :: !Text,
     -- | Whether this looper is enabled
-    looperDefEnabled :: Bool,
+    looperDefEnabled :: !Bool,
     -- | The time between the start of each run
-    looperDefPeriod :: NominalDiffTime,
+    looperDefPeriod :: !NominalDiffTime,
     -- | The time before the first run
-    looperDefPhase :: NominalDiffTime,
+    looperDefPhase :: !NominalDiffTime,
     -- | The function to run
-    looperDefFunc :: m ()
+    looperDefFunc :: !(m ())
   }
   deriving (Generic)
 
@@ -73,9 +73,9 @@ hours = minutes . (* 60)
 
 -- | Settings that you might want to pass into a looper using 'mkLooperDef'
 data LooperSettings = LooperSettings
-  { looperSetEnabled :: Bool,
-    looperSetPhase :: NominalDiffTime,
-    looperSetPeriod :: NominalDiffTime
+  { looperSetEnabled :: !Bool,
+    looperSetPhase :: !NominalDiffTime,
+    looperSetPeriod :: !NominalDiffTime
   }
   deriving (Show, Eq, Generic)
 
